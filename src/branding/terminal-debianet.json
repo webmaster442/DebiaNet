@@ -1,0 +1,31 @@
+{
+  "profiles": [
+    {
+      "antialiasingMode": "aliased",
+      "colorScheme": "DebiaNet Monokai"
+    }
+  ],
+  "schemes": [
+    {
+      "name": "DebiaNet Monokai",
+      "black": "#48483e",
+      "red": "#dc2566",
+      "green": "#8fc029",
+      "yellow": "#d4c96e",
+      "blue": "#55bcce",
+      "purple": "#9358fe",
+      "cyan": "#56b7a5",
+      "white": "#acada1",
+      "brightBlack": "#76715e",
+      "brightRed": "#fa2772",
+      "brightGreen": "#a7e22e",
+      "brightYellow": "#e7db75",
+      "brightBlue": "#66d9ee",
+      "brightPurple": "#ae82ff",
+      "brightCyan": "#66efd5",
+      "brightWhite": "#cfd0c2",
+      "background": "#21182d",
+      "foreground": "#f1ebeb"
+    }
+  ]
+}
