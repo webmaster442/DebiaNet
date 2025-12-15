@@ -66,13 +66,14 @@ wsl --update
 
 4. Download latest DebaNet relese from github & install it by double clicking on the downloaded .wsl file.
 
-## Build instructions
+## WSL Build instructions
 
 1. Install debian: `wsl --install Debian`
-2. Run install.sh: `./src/install.sh`
-3. Run branding.sh: `sudo ./src/branding.sh`
-4. exit: `exit`
-5. do a shutdown: `wsl --shutdown`
-6. export: `wsl --export Debian --format tar.xz debiannet.wsl`
-7. unregister debian: `wsl --unregister Debian`
-8. reinstall debianet.wsl
+2. Install user: `user` with password: `pass`
+3. Run install.sh: `./src/install.sh`
+4. Run branding.sh: `sudo ./src/branding.sh`
+5. exit: `exit`
+6. do a shutdown: `wsl --shutdown`
+7. export: `wsl --export Debian --format tar.xz debiannet.wsl`
+8. unregister debian: `wsl --unregister Debian`
+9. reinstall debianet.wsl

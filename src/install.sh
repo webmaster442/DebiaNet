@@ -6,8 +6,13 @@ set -euo pipefail
 #remove conflicting packages with docker
 sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
 
-# install dependencies
+# update package sources
 sudo apt update
+
+# dist upgrade
+sudo apt dist-upgrade -y
+
+# install apt packages
 sudo apt install -y wget ca-certificates curl gpg libxml2 mc htop openssl git git-lfs lazygit tmux bat openssh-server unzip fastfetch
 
 # prerpare docker install
@@ -26,7 +31,6 @@ wget https://packages.microsoft.com/config/debian/13/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
-
 # update package sources
 sudo apt update
 
@@ -36,19 +40,11 @@ sudo apt install -y dotnet-sdk-10.0 dotnet-sdk-9.0 dotnet-sdk-8.0
 # install docker
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# dist upgrade
-sudo apt dist-upgrade -y
-
 # configure docker user
 sudo usermod -aG docker $USER
 
 # update dotnet workloads
 sudo dotnet workload update
-
-# cleanup
-sudo apt autoremove -y
-sudo apt clean
-sudo apt autoclean
 
 # install devtoys.cli
 wget https://github.com/DevToys-app/DevToys/releases/download/v2.0.8.0/devtoys.cli_linux_x64.deb -O devtoys.cli.deb
@@ -65,24 +61,30 @@ rm ripgrep.deb
 
 # install .NET Global tools
 dotnet tool install --global PowerShell
+
+sudo dotnet workload update
+
 dotnet tool install --global dotnet-ef
 dotnet tool install --global csharprepl
 dotnet tool install --global dotnet-coverage
-dotnet tool install --global Microsoft.VisualStudio.SlnGen.Tool --add-source https://api.nuget.org/v3/index.json --ignore-failed-sources
+dotnet tool install --global Microsoft.VisualStudio.SlnGen.Tool
 dotnet tool install --global upgrade-assistant
 dotnet tool install --global ilspycmd
 dotnet tool install --global DotnetPackaging.Tool
 
-dotnet nuget locals all --clear
-dotnet nuget locals http-cache --clear
-dotnet nuget locals temp --clear
-dotnet nuget locals global-packages --clear
 
 # set path for dotnet tools
 echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc
 echo 'eval "$(dotnet completions script bash)"' >> ~/.bashrc
 export PATH="$PATH:$HOME/.dotnet/tools"
 pwsh postinstall.ps1
+
+# cleanup
+sudo apt autoremove -y
+sudo apt clean
+sudo apt autoclean
+
+dotnet nuget locals all --clear
 
 clear
 echo "Installation complete! Please restart your terminal or log out and back in for all changes to take effect."
