@@ -43,6 +43,10 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 # configure docker user
 sudo usermod -aG docker $USER
 
+# enable docker tcp port for vs debug connecting
+sudo mkdir -p /etc/systemd/system/docker.service.d/
+sudo cp docker-override.conf /etc/systemd/system/docker.service.d/override.conf
+
 # update dotnet workloads
 sudo dotnet workload update
 
@@ -58,6 +62,11 @@ curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
 wget https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep_15.1.0-1_amd64.deb -O ripgrep.deb
 sudo dpkg -i ripgrep.deb
 rm ripgrep.deb
+
+# install dive
+DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
+curl -fOL "https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb"
+sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 
 # install .NET Global tools
 dotnet tool install --global PowerShell

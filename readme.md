@@ -34,6 +34,7 @@ DebiaNet comes preinstalled & preconfigured with a user to be able to use docker
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
 - [FastFetch](https://github.com/fastfetch-cli/fastfetch)
+- [Dive](https://github.com/wagoodman/dive)
 
 **.NET tools from microsoft**
 
