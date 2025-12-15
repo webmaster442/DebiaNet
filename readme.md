@@ -35,16 +35,26 @@ DebiaNet comes preinstalled & preconfigured with a user to be able to use docker
 - [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
 - [FastFetch](https://github.com/fastfetch-cli/fastfetch)
 
-**.NET tools**
+**.NET tools from microsoft**
 
 - [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
 - [dotnet-ef](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 - [csharprepl](https://github.com/waf/CSharpRepl)
 - [dotnet-coverage](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-coverage)
+- [dotnet-counters](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters)
+- [dotnet-gcdump](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump)
+- [dotnet-monitor](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-monitor)
+- [dotnet-trace](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
+- [dotnet-stack](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-stack)
+- [dotnet-symbol](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-symbol)
 - [sngen](https://github.com/microsoft/slngen)
 - [upgrade-assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
+
+**3rd party .NET tools**
+
 - [ilspycmd](github.com/icsharpcode/ILSpy)
 - [DotnetPackaging.Tool](https://github.com/quamotion/dotnet-packaging)
+- [roslynator](https://github.com/dotnet/roslynator?tab=readme-ov-file#command-line-tool)
 
 ## Installation
 

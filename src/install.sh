@@ -61,17 +61,21 @@ rm ripgrep.deb
 
 # install .NET Global tools
 dotnet tool install --global PowerShell
-
-sudo dotnet workload update
-
 dotnet tool install --global dotnet-ef
-dotnet tool install --global csharprepl
 dotnet tool install --global dotnet-coverage
+dotnet tool install --global dotnet-counters
+dotnet tool install --global dotnet-gcdump
+dotnet tool install --global dotnet-monitor
+dotnet tool install --global dotnet-trace
+dotnet tool install --global dotnet-stack
+dotnet tool install --global dotnet-symbol
 dotnet tool install --global Microsoft.VisualStudio.SlnGen.Tool
 dotnet tool install --global upgrade-assistant
+
+#install third party dotnet tools
 dotnet tool install --global ilspycmd
 dotnet tool install --global DotnetPackaging.Tool
-
+dotnet tool install --global roslynator.dotnet.cli
 
 # set path for dotnet tools
 echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc
