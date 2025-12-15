@@ -9,6 +9,7 @@ if getent passwd "$DEFAULT_UID" >/dev/null; then
     echo 'Welcome to DebiaNet. The default user account is user and the default password is pass.'
     echo 'For security reasons, it is recommended to change the password after your first login.'
     echo 'You can also create additional user accounts using the "adduser" command.'
+	echo 'type debianet to execute debianet utility'
     exit 0
 fi
 

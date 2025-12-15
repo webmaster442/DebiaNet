@@ -4,4 +4,3 @@ internal record class DockerContainer
 {
     public required string ID { get; init; }
 }
-

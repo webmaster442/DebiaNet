@@ -1,7 +1,6 @@
 {
   "profiles": [
     {
-      "antialiasingMode": "aliased",
       "colorScheme": "DebiaNet Monokai"
     }
   ],

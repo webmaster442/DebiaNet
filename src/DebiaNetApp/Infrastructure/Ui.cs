@@ -64,4 +64,3 @@ internal static class Ui
         AnsiConsole.WriteLine();
     }
 }
-

@@ -17,17 +17,17 @@ internal sealed class DockerMenuCommand : AsyncCommand
             new JsonCliMenuItem<DockerPs>(Resources.Menu_Docker_ListRunningContainers, $"{Emoji.Known.Scroll} ")
             {
                 Command = new ("docker", "ps", "--format", "\"{{json . }}\""),
-                ResultProcessor = DisplayAsTable
+                ResultProcessor = DisplayAsTables
             },
             new JsonCliMenuItem<DockerPs>(Resources.Menu_Docker_ListAllContainers, $"{Emoji.Known.Scroll} ")
             {
                 Command = new("docker", "ps", "-a", "--format", "\"{{json . }}\""),
-                ResultProcessor = DisplayAsTable
+                ResultProcessor = DisplayAsTables
             },
             new JsonCliMenuItem<DockerImage>(Resources.Menu_Docker_ListImages, $"{Emoji.Known.Scroll} ")
             {
                 Command = new ("docker", "images", "--format", "\"{{json . }}\""),
-                ResultProcessor = DisplayAsTable
+                ResultProcessor = DisplayAsTables
             },
             new CliMenuItem(Resources.Menu_Docker_Stop, Emoji.Known.StopSign)
             {
@@ -57,7 +57,7 @@ internal sealed class DockerMenuCommand : AsyncCommand
         return await selection.Execute();
     }
 
-    private void DisplayAsTable(IEnumerable<DockerImage> enumerable)
+    private void DisplayAsTables(IEnumerable<DockerImage> enumerable)
     {
         foreach (var item in enumerable.OrderBy(x => x.ID))
         {
@@ -66,7 +66,7 @@ internal sealed class DockerMenuCommand : AsyncCommand
         }
     }
 
-    private void DisplayAsTable(IEnumerable<DockerPs> enumerable)
+    private void DisplayAsTables(IEnumerable<DockerPs> enumerable)
     {
         foreach (var item in enumerable.OrderBy(x => x.ID))
         {
