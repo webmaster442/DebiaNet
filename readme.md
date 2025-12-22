@@ -18,48 +18,50 @@ DebiaNet comes preinstalled & preconfigured with a user to be able to use docker
 
 **As debian packages**
 
-- [htop](https://htop.dev/)
-- [openssl](https://www.openssl.org/)
-- [git](https://git-scm.com/)
-- [wget](https://www.gnu.org/software/wget/)
-- [curl](https://curl.se/)
-- [docker](https://www.docker.com/)
+- [.NET SDK 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 - [.NET SDK 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [.NET SDK 9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
-- [.NET SDK 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
-- [DevToys](https://devtoys.app/)
-- [lazygit](https://github.com/jesseduffield/lazygit)
-- [tmux](https://github.com/tmux/tmux/wiki)
 - [bat](https://github.com/sharkdp/bat)
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
-- [FastFetch](https://github.com/fastfetch-cli/fastfetch)
+- [binutils](https://www.gnu.org/software/binutils/)
+- [curl](https://curl.se/)
+- [DevToys](https://devtoys.app/)
 - [Dive](https://github.com/wagoodman/dive)
+- [docker](https://www.docker.com/)
+- [FastFetch](https://github.com/fastfetch-cli/fastfetch)
+- [git](https://git-scm.com/)
+- [htop](https://htop.dev/)
+- [lazygit](https://github.com/jesseduffield/lazygit)
+- [openssl](https://www.openssl.org/)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [strace](https://strace.io/)
+- [tmux](https://github.com/tmux/tmux/wiki)
+- [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
+- [wget](https://www.gnu.org/software/wget/)
 
 **.NET tools from microsoft**
 
-- [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
-- [dotnet-ef](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
-- [csharprepl](https://github.com/waf/CSharpRepl)
-- [dotnet-coverage](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-coverage)
 - [dotnet-counters](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters)
+- [dotnet-coverage](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-coverage)
+- [dotnet-ef](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 - [dotnet-gcdump](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump)
 - [dotnet-monitor](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-monitor)
-- [dotnet-trace](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
 - [dotnet-stack](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-stack)
 - [dotnet-symbol](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-symbol)
+- [dotnet-trace](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
+- [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
 - [sngen](https://github.com/microsoft/slngen)
 - [upgrade-assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
 
 **3rd party .NET tools**
 
-- [ilspycmd](github.com/icsharpcode/ILSpy)
+- [csharprepl](https://github.com/waf/CSharpRepl)
 - [DotnetPackaging.Tool](https://github.com/quamotion/dotnet-packaging)
+- [ilspycmd](github.com/icsharpcode/ILSpy)
 - [roslynator](https://github.com/dotnet/roslynator?tab=readme-ov-file#command-line-tool)
 
 ## Installation
 
-1. Make sure you have HyperV and WSL installed & enabled
+1. Make sure you have HyperV and WSL installed & enabled. **Note: These commands require admin rights**
 
 ```powershell
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
@@ -71,8 +73,8 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 3. After reboot update WSL and set the default version to 2.0 
 
 ```powershell
-wsl --set-default-version 2
 wsl --update
+wsl --set-default-version 2
 ```
 
 4. Download latest DebaNet relese from github & install it by double clicking on the downloaded .wsl file.
@@ -81,8 +83,9 @@ wsl --update
 
 1. Install debian: `wsl --install Debian`
 2. Install user: `user` with password: `pass`
-3. Run install.sh: `./src/install.sh`
-4. Run branding.sh: `sudo ./src/branding.sh`
+3. Run install.sh: `./src/install.sh` this will do most of the installing of software
+4. Run branding.sh: `sudo ./src/branding.sh` to do branding
+5. Run install-app.sh: `sudo ./src/install-app.sh` to install the debianet app.
 5. exit: `exit`
 6. do a shutdown: `wsl --shutdown`
 7. export: `wsl --export Debian --format tar.xz debiannet.wsl`

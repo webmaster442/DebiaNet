@@ -13,7 +13,25 @@ sudo apt update
 sudo apt dist-upgrade -y
 
 # install apt packages
-sudo apt install -y wget ca-certificates curl gpg libxml2 mc htop openssl git git-lfs lazygit tmux bat openssh-server unzip fastfetch
+sudo apt install -y \
+    bat \
+    binutils \
+    ca-certificates \
+    curl \
+    fastfetch \
+    git \
+    git-lfs \
+    gpg \
+    htop \
+    lazygit \
+    libxml2 \
+    mc \
+    openssh-server \
+    openssl \
+    strace \
+    tmux \
+    unzip \
+    wget
 
 # prerpare docker install
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
@@ -67,23 +85,25 @@ rm ripgrep.deb
 DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
 curl -fOL "https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb"
 sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
+rm ./dive_${DIVE_VERSION}_linux_amd64.deb
 
 # install .NET Global tools
-dotnet tool install --global PowerShell
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-coverage
 dotnet tool install --global dotnet-counters
+dotnet tool install --global dotnet-coverage
+dotnet tool install --global dotnet-ef
 dotnet tool install --global dotnet-gcdump
 dotnet tool install --global dotnet-monitor
-dotnet tool install --global dotnet-trace
 dotnet tool install --global dotnet-stack
 dotnet tool install --global dotnet-symbol
+dotnet tool install --global dotnet-trace
 dotnet tool install --global Microsoft.VisualStudio.SlnGen.Tool
+dotnet tool install --global PowerShell
 dotnet tool install --global upgrade-assistant
 
 #install third party dotnet tools
-dotnet tool install --global ilspycmd
+dotnet tool install --global csharprepl
 dotnet tool install --global DotnetPackaging.Tool
+dotnet tool install --global ilspycmd
 dotnet tool install --global roslynator.dotnet.cli
 
 # set path for dotnet tools
