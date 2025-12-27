@@ -14,6 +14,10 @@ DebiaNet is currently a personal project with a planned update and release cycle
 
 DebiaNet comes preinstalled & preconfigured with a user to be able to use docker. The default username is `user` and the default password is `pass`. For security reasons it's highly recommended to change this password with the `passwd` command after the first login. The reason why we provide a preconfigured user is that the `user` account is configured with the nessceccary permissions to run docker. 
 
+## Changelog
+
+The complete list of changes can be found here: [changelog](changelog.md)
+
 ## Installed Software
 
 **As debian packages**
@@ -51,11 +55,11 @@ DebiaNet comes preinstalled & preconfigured with a user to be able to use docker
 - [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
 - [sngen](https://github.com/microsoft/slngen)
 - [upgrade-assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
+- [DocFx](https://dotnet.github.io/docfx/index.html)
 
 **3rd party .NET tools**
 
 - [csharprepl](https://github.com/waf/CSharpRepl)
-- [DotnetPackaging.Tool](https://github.com/quamotion/dotnet-packaging)
 - [ilspycmd](github.com/icsharpcode/ILSpy)
 - [roslynator](https://github.com/dotnet/roslynator?tab=readme-ov-file#command-line-tool)
 

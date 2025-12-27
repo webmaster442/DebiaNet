@@ -5,6 +5,38 @@ set -ue
 DEFAULT_GROUPS='adm,cdrom,sudo,dip,plugdev'
 DEFAULT_UID='1000'
 
+echo "                   ######  # #                         "
+echo "               ####################+#                  "
+echo "            ############################               "
+echo "          ##########             ##########            "
+echo "        ########                    ########           "
+echo "       #######                        ########         "
+echo "      #####                             #######        "
+echo "    #####                                #### #        "
+echo "   ####                    ##             ####         "
+echo "   ####                ##                 ####         "
+echo "  ####               ##                    ###         "
+echo " ####               #                      ###         "
+echo " ####              ##                      ###         "
+echo " ####              #                      ###          "
+echo " ###               ##                     ###          "
+echo " ###               ##             #      ###           "
+echo " ###                ##       ##          ##            "
+echo "  ###             #  ##                ##              "
+echo "  ###                  ###          ###                "
+echo "  ###                  # ###########                   "
+echo "   ####                    #                           "
+echo "    #####                                              "
+echo "    #####               ###     ##   ####### ######### "
+echo "     ####               # ##    ##   ##          ##    "
+echo "      ####              ## ##   ##   ##          ##    "
+echo "        ####            ##  ##  ##   #######     ##    "
+echo "         ####           ##   ## ##   ##          ##    "
+echo "           ####         ##    ####   ##          ##    "
+echo "             ####       ##     ###   #######     ##    "
+echo "                ####                                   "
+echo "                    ##"
+
 if getent passwd "$DEFAULT_UID" >/dev/null; then
     echo 'Welcome to DebiaNet. The default user account is user and the default password is pass.'
     echo 'For security reasons, it is recommended to change the password after your first login.'
