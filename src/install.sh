@@ -100,11 +100,16 @@ dotnet tool install --global Microsoft.VisualStudio.SlnGen.Tool
 dotnet tool install --global PowerShell
 dotnet tool install --global upgrade-assistant
 
-#install third party dotnet tools
+# install third party dotnet tools
 dotnet tool install --global csharprepl
-dotnet tool install --global DotnetPackaging.Tool
 dotnet tool install --global ilspycmd
 dotnet tool install --global roslynator.dotnet.cli
+# dotnet packaging tools
+dotnet tool install --global dotnet-zip
+dotnet tool install --global dotnet-tarball
+dotnet tool install --global dotnet-rpm
+dotnet tool install --global dotnet-deb
+
 
 # set path for dotnet tools
 echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc

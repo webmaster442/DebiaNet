@@ -1,6 +1,6 @@
 # DebiaNet
 
-![logo](src/branding/debianet192.png)
+![logo](src/branding/debianet-256.png)
 
 A Debian based WSL Distro for .NET & Docker development based on Debian Trixie WSL distro. The purpose of DebiaNet is to simplify cross-platform .NET development by providing a pre-configured environment. This distribution is tailored for developers who work with .NET, Docker, and related tools, ensuring a seamless and efficient setup on Windows Subsystem for Linux (WSL).
 
@@ -8,7 +8,7 @@ The primary focus of this distribution is to provide an optimized experience wit
 
 ## Release policy
 
-DebiaNet is currently a personal project with a planned update and release cycle of six months. This schedule may be adjusted in the future based on the growth and needs of the user base.
+DebiaNet is currently a personal project with a planned update and release cycle of six months. This schedule may be adjusted in the future based on the growth and needs of the user base and the release cycle of the .NET SDK versions.
 
 ## Configuration
 
@@ -28,7 +28,7 @@ DebiaNet comes preinstalled & preconfigured with a user to be able to use docker
 - [Dive](https://github.com/wagoodman/dive)
 - [docker](https://www.docker.com/)
 - [FastFetch](https://github.com/fastfetch-cli/fastfetch)
-- [git](https://git-scm.com/)
+- [git](https://git-scm.com/) with [git-lfs](https://git-lfs.com/)
 - [htop](https://htop.dev/)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [openssl](https://www.openssl.org/)
