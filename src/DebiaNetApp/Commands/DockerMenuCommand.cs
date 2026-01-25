@@ -12,6 +12,12 @@ internal sealed class DockerMenuCommand : AsyncCommand
 {
     public override async Task<int> ExecuteAsync(CommandContext context, CancellationToken cancellationToken)
     {
+        if (!DependencyChecker.IsDockerInstalled())
+        {
+            Ui.Error(Resources.Error_DockerNotInstalled);
+            return ExitCodes.MissingDependency;
+        }
+
         var selections = new SelectorMenuItem[]
         {
             new JsonCliMenuItem<DockerPs>(Resources.Menu_Docker_ListRunningContainers, $"{Emoji.Known.Scroll} ")

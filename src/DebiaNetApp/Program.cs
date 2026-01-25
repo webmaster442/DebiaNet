@@ -17,7 +17,13 @@ if (!OperatingSystem.IsLinux())
 if (Linux.IsRunningWithElevatedPriviliges())
 {
     Ui.Error(Resources.Error_SudoUser);
-    return ExitCodes.NotLinux;
+    return ExitCodes.SudoUser;
+}
+
+if (!DependencyChecker.IsAptAvailable())
+{
+    Ui.Error(Resources.Error_NotAptDistro);
+    return ExitCodes.MissingDependency;
 }
 
 var app = new CommandApp<MainMenuCommand>();

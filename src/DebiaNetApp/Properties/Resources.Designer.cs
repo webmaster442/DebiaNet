@@ -61,6 +61,24 @@ namespace DebiaNetApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This function of the app requires docker to be installed..
+        /// </summary>
+        public static string Error_DockerNotInstalled {
+            get {
+                return ResourceManager.GetString("Error_DockerNotInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your distribution doesn&apos;t use apt as package manager. This app only supports apt based distributions.
+        /// </summary>
+        public static string Error_NotAptDistro {
+            get {
+                return ResourceManager.GetString("Error_NotAptDistro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This application is only supported on Linux systems..
         /// </summary>
         public static string Error_NotLinux {

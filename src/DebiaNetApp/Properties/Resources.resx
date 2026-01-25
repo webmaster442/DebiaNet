@@ -186,4 +186,10 @@
   <data name="Table_Header_Value" xml:space="preserve">
     <value>Value</value>
   </data>
+  <data name="Error_DockerNotInstalled" xml:space="preserve">
+    <value>This function of the app requires docker to be installed.</value>
+  </data>
+  <data name="Error_NotAptDistro" xml:space="preserve">
+    <value>Your distribution doesn't use apt as package manager. This app only supports apt based distributions</value>
+  </data>
 </root>
