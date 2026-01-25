@@ -6,6 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Company>Webmaster442</Company>
+    <PackageProjectUrl>https://github.com/webmaster442/DebiaNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/webmaster442/DebiaNet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>debianet</ToolCommandName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>
+      $([System.DateTime]::UtcNow.ToString("yyyy")).$([System.DateTime]::UtcNow.ToString("MM")).$([System.DateTime]::UtcNow.ToString("dd")).0
+    </Version>
   </PropertyGroup>
 
   <ItemGroup>
