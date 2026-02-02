@@ -23,6 +23,7 @@ sudo apt install -y \
     git-lfs \
     gpg \
     htop \
+    just \
     lazygit \
     libxml2 \
     mc \
