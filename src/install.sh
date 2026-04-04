@@ -32,7 +32,9 @@ sudo apt install -y \
     strace \
     tmux \
     unzip \
-    wget
+    wget \
+    jq \
+    byobu
 
 # prerpare docker install
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
@@ -66,9 +68,6 @@ sudo usermod -aG docker $USER
 sudo mkdir -p /etc/systemd/system/docker.service.d/
 sudo cp docker-override.conf /etc/systemd/system/docker.service.d/override.conf
 
-# update dotnet workloads
-sudo dotnet workload update
-
 # install devtoys.cli
 wget https://github.com/DevToys-app/DevToys/releases/download/v2.0.8.0/devtoys.cli_linux_x64.deb -O devtoys.cli.deb
 sudo dpkg -i devtoys.cli.deb
@@ -76,6 +75,12 @@ rm devtoys.cli.deb
 
 # install VS Remote debugger
 curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
+
+# install infer#
+mkdir -p ~/infersharp
+curl -L https://github.com/microsoft/infersharp/releases/download/v1.5/infersharp-linux64-v1.5.tar.gz -o infersharp.tar.gz
+tar -xvzf infersharp.tar.gz -C ~/infersharp
+rm infersharp.tar.gz
 
 # install ripgrep
 wget https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep_15.1.0-1_amd64.deb -O ripgrep.deb
@@ -87,6 +92,9 @@ DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/la
 curl -fOL "https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/dive_${DIVE_VERSION}_linux_amd64.deb"
 sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 rm ./dive_${DIVE_VERSION}_linux_amd64.deb
+
+# update dotnet workloads
+sudo dotnet workload update
 
 # install .NET Global tools
 dotnet tool install --global dotnet-counters
@@ -106,6 +114,7 @@ dotnet tool install --global docfx
 dotnet tool install --global csharprepl
 dotnet tool install --global ilspycmd
 dotnet tool install --global roslynator.dotnet.cli
+dotnet tool install --global CsProj
 
 # set path for dotnet tools
 echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc

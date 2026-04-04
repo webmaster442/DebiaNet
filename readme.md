@@ -40,8 +40,14 @@ The complete list of changes can be found here: [changelog](changelog.md)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [strace](https://strace.io/)
 - [tmux](https://github.com/tmux/tmux/wiki)
-- [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
 - [wget](https://www.gnu.org/software/wget/)
+- [jq](https://jqlang.org/)
+- [byobu](https://www.byobu.org/)
+
+**Apps**
+
+- [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
+- [Infer#](https://github.com/microsoft/infersharp)
 
 **.NET tools from microsoft**
 
@@ -54,7 +60,7 @@ The complete list of changes can be found here: [changelog](changelog.md)
 - [dotnet-symbol](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-symbol)
 - [dotnet-trace](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
 - [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
-- [sngen](https://github.com/microsoft/slngen)
+- [slngen](https://github.com/microsoft/slngen)
 - [upgrade-assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
 - [DocFx](https://dotnet.github.io/docfx/index.html)
 
@@ -63,6 +69,7 @@ The complete list of changes can be found here: [changelog](changelog.md)
 - [csharprepl](https://github.com/waf/CSharpRepl)
 - [ilspycmd](github.com/icsharpcode/ILSpy)
 - [roslynator](https://github.com/dotnet/roslynator?tab=readme-ov-file#command-line-tool)
+- [Csproj](https://github.com/webmaster442/csproj)
 
 ## Installation
 
@@ -89,10 +96,11 @@ wsl --set-default-version 2
 1. Install debian: `wsl --install Debian`
 2. Install user: `user` with password: `pass`
 3. Run install.sh: `./src/install.sh` this will do most of the installing of software
-4. Run branding.sh: `sudo ./src/branding.sh` to do branding
-5. Run install-app.sh: `sudo ./src/install-app.sh` to install the debianet app.
-5. exit: `exit`
-6. do a shutdown: `wsl --shutdown`
-7. export: `wsl --export Debian --format tar.xz debiannet.wsl`
-8. unregister debian: `wsl --unregister Debian`
-9. reinstall debianet.wsl
+4. Change to the source directory: `cd src`
+5. Run branding.sh: `sudo ./branding.sh` to do branding
+6. Run install-app.sh: `sudo ./install-app.sh` to install the debianet app.
+7. exit: `exit`
+8. do a shutdown: `wsl --shutdown`
+9.  export: `wsl --export Debian --format tar.xz debiannet.wsl`
+10. unregister debian: `wsl --unregister Debian`
+11. reinstall debianet.wsl
