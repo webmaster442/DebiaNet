@@ -61,6 +61,15 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (Press &lt;space&gt; to select, &lt;enter&gt; to accept, &lt;esc&gt; to cancel).
+        /// </summary>
+        internal static string App_MultiSelectionInstructions {
+            get {
+                return ResourceManager.GetString("App_MultiSelectionInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to main menu.
         /// </summary>
         internal static string DotnetMenu_Item_Back {
@@ -138,6 +147,24 @@ namespace Debianet.Properties {
         internal static string DotnetMenu_Title {
             get {
                 return ResourceManager.GetString("DotnetMenu_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .NET tool installer.
+        /// </summary>
+        internal static string DotnetToolsInstall_Title {
+            get {
+                return ResourceManager.GetString("DotnetToolsInstall_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install .NET Tools....
+        /// </summary>
+        internal static string MainMenu_DotnetToolsInstall {
+            get {
+                return ResourceManager.GetString("MainMenu_DotnetToolsInstall", resourceCulture);
             }
         }
         

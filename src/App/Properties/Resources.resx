@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App_MultiSelectionInstructions" xml:space="preserve">
+    <value>(Press &lt;space&gt; to select, &lt;enter&gt; to accept, &lt;esc&gt; to cancel)</value>
+  </data>
   <data name="DotnetMenu_Item_Back" xml:space="preserve">
     <value>Back to main menu</value>
   </data>
@@ -143,6 +146,12 @@
   </data>
   <data name="DotnetMenu_Title" xml:space="preserve">
     <value>.NET commands</value>
+  </data>
+  <data name="DotnetToolsInstall_Title" xml:space="preserve">
+    <value>.NET tool installer</value>
+  </data>
+  <data name="MainMenu_DotnetToolsInstall" xml:space="preserve">
+    <value>Install .NET Tools...</value>
   </data>
   <data name="MainMenu_Item_Dotnet" xml:space="preserve">
     <value>.NET related commands...</value>

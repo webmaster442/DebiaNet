@@ -50,6 +50,12 @@ internal class MainMenu : Menu
                 Text = Resources.MainMenu_Item_Dotnet,
                 Submenu = MenuRegistry.Dotnet
             };
+            yield return new ReplaceMenuMenuItem
+            {
+                Icon = Icons.Forward,
+                Text = Resources.MainMenu_DotnetToolsInstall,
+                Submenu = MenuRegistry.DotnetToolInstaller
+            };
             yield return new DelegateMenuItem()
             {
                 Text = Resources.MainMenu_Item_Exit,

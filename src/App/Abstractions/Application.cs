@@ -1,4 +1,5 @@
-﻿using Debianet.Ui;
+﻿using Debianet.Properties;
+using Debianet.Ui;
 
 using Spectre.Console;
 
@@ -102,31 +103,74 @@ internal sealed class Application : IApplication
             try
             {
                 _currentMenu.BeforeSelection();
-                var prompt = new SelectionPrompt<MenuItemBase>()
-                    .Title(_currentMenu.Title)
-                    .UseConverter(MenuitemConverter)
-                    .AddChoices(_currentMenu.Items);
-
-                var grid = new Grid();
-                grid.AddColumn();
-                grid.AddColumn();
-
-
-                prompt.SearchEnabled = true;
-                var selection = AnsiConsole.Prompt(prompt);
-
-                using (var tokenSource = new ConsoleCancellationTokenSource())
-                {
-                    _terminal.SwitchToMainBuffer();
-                    _terminal.Clear();
-                    await selection.Execute(this, tokenSource.Token);
-                }
+                if (_currentMenu is MultiSelectMenu multiSelectMenu)
+                    await DoMultiSelectionMenu(multiSelectMenu);
+                else
+                    await DoSingleSelectionMenu(_currentMenu);
             }
             catch (Exception ex)
             {
                 _terminal.DisplayException(ex);
             }
         }
+    }
+
+    private async Task DoMultiSelectionMenu(MultiSelectMenu menu)
+    {
+        static List<MenuItemBase> OnCancel()
+            => [];
+
+        var prompt = new MultiSelectionPrompt<MenuItemBase>()
+            .Title(menu.Title)
+            .UseConverter(MenuitemConverter)
+            .AddCancelResult(OnCancel)
+            .PageSize(GetPageSize())
+            .InstructionsText(Resources.App_MultiSelectionInstructions)
+            .AddChoices(menu.Items);
+
+        List<MenuItemBase> selections = AnsiConsole.Prompt(prompt);
+
+        using (var tokenSource = new ConsoleCancellationTokenSource())
+        {
+            _terminal.SwitchToMainBuffer();
+            _terminal.Clear();
+            await menu.ProcessSelectedItems(selections, tokenSource.Token);
+        }
+    }
+
+    private async Task DoSingleSelectionMenu(Menu menu)
+    {
+        static MenuItemBase OnCancel()
+        {
+            return new DelegateMenuItem()
+            {
+                Action = () => { },
+                Text = "Cancel"
+            };
+        }
+
+        var prompt = new SelectionPrompt<MenuItemBase>()
+            .Title(menu.Title)
+            .UseConverter(MenuitemConverter)
+            .AddCancelResult(OnCancel)
+            .PageSize(GetPageSize())
+            .AddChoices(menu.Items);
+
+        prompt.SearchEnabled = true;
+        var selection = AnsiConsole.Prompt(prompt);
+
+        using (var tokenSource = new ConsoleCancellationTokenSource())
+        {
+            _terminal.SwitchToMainBuffer();
+            _terminal.Clear();
+            await selection.Execute(this, tokenSource.Token);
+        }
+    }
+
+    private static int GetPageSize()
+    {
+        int size = Console.WindowHeight - Console.CursorTop - 2;
+        return size < 1 ? 1 : size;
     }
 
     private string MenuitemConverter(MenuItemBase item)
