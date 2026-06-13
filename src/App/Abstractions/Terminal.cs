@@ -49,4 +49,14 @@ internal sealed class Terminal : ITerminal
 
     public void Line() 
         => AnsiConsole.Write(new Rule());
+
+    public void FigletText(string text)
+    {
+        var figlet = new FigletText(text)
+            .Color(_palete.Info)
+            .Justify(Justify.Left);
+
+        AnsiConsole.Write(figlet);
+    }
+
 }

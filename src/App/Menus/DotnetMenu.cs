@@ -20,9 +20,7 @@ internal class DotnetMenu : Menu
         => Resources.DotnetMenu_Title;
 
     public override void BeforeSelection()
-    {
-        AnsiConsole.Write(new FigletText(".NET"));
-    }
+        => _terminal.FigletText(".NET");
 
     public override IEnumerable<MenuItemBase> Items
     {
@@ -36,42 +34,49 @@ internal class DotnetMenu : Menu
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Info,
                 Text = Resources.DotnetMenu_Item_ListRuntimes,
                 Program = "dotnet",
                 Arguments = ["--list-runtimes"]
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Info,
                 Text = Resources.DotnetMenu_Item_ListSdks,
                 Program = "dotnet",
                 Arguments = ["--list-sdks"]
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Info,
                 Text = Resources.DotnetMenu_Item_ListWorkloads,
                 Program = "dotnet",
                 Arguments = ["workload", "list"]
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Info,
                 Text = Resources.DotnetMenu_Item_ListTools,
                 Program = "dotnet",
                 Arguments = ["tool", "list", "-g"]
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Refresh,
                 Text = Resources.DotnetMenu_Item_UpdateWorkloads,
                 Program = "dotnet",
                 Arguments = ["workload", "update"]
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Refresh,
                 Text = Resources.DotnetMenu_Item_UpdateTools,
                 Program = "dotnet",
                 Arguments = ["tool", "update", "-g", "--all"]
             };
             yield return new RunCommandMenuItem(_terminal)
             {
+                Icon = Icons.Trash,
                 Text = Resources.DotnetMenu_Item_ClearNugetCache,
                 Program = "dotnet",
                 Arguments = ["nuget", "locals", "all", "--clear"]

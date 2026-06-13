@@ -4,6 +4,8 @@ using Debianet.Abstractions;
 using Debianet.Properties;
 using Debianet.Ui;
 
+using Spectre.Console;
+
 namespace Debianet.Menus;
 
 internal class DotnetToolsInstallerMenu : MultiSelectMenu
@@ -24,9 +26,13 @@ internal class DotnetToolsInstallerMenu : MultiSelectMenu
         return new MenuItem
         {
             Text = toolName,
-            Data = toolName
+            Data = toolName,
+            Icon = Icons.Package
         };
     }
+
+    public override void BeforeSelection()
+        => _terminal.FigletText(".NET tools");
 
     public override IEnumerable<MenuItemBase> Items
     {
@@ -54,6 +60,9 @@ internal class DotnetToolsInstallerMenu : MultiSelectMenu
 
     public override async Task ProcessSelectedItems(IReadOnlyList<MenuItemBase> selectedItems, CancellationToken cancellationToken)
     {
+        if (selectedItems.Count == 0)
+            return;
+
         int counter = 0;
         var items = selectedItems.OfType<MenuItem>().ToArray();
         TimeSpan totalTime = TimeSpan.Zero;
