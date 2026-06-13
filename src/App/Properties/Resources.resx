@@ -162,4 +162,13 @@
   <data name="MainMenu_Title" xml:space="preserve">
     <value>Debianet main menu</value>
   </data>
+  <data name="MessageBox_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="StartupCheck_NotLinux" xml:space="preserve">
+    <value>This application is only supported on Linux systems.</value>
+  </data>
+  <data name="StartupCheck_RootUser" xml:space="preserve">
+    <value>Please run the application as a normal user.</value>
+  </data>
 </root>

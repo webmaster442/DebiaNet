@@ -194,5 +194,32 @@ namespace Debianet.Properties {
                 return ResourceManager.GetString("MainMenu_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string MessageBox_Error {
+            get {
+                return ResourceManager.GetString("MessageBox_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This application is only supported on Linux systems..
+        /// </summary>
+        internal static string StartupCheck_NotLinux {
+            get {
+                return ResourceManager.GetString("StartupCheck_NotLinux", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please run the application as a normal user..
+        /// </summary>
+        internal static string StartupCheck_RootUser {
+            get {
+                return ResourceManager.GetString("StartupCheck_RootUser", resourceCulture);
+            }
+        }
     }
 }

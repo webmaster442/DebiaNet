@@ -1,4 +1,6 @@
-﻿namespace Debianet.Abstractions;
+﻿using Debianet.Ui;
+
+namespace Debianet.Abstractions;
 
 internal interface ITerminal
 {
@@ -15,4 +17,5 @@ internal interface ITerminal
     void Error(FormattableString formattableString);
     void WaitKey();
     void Line();
+    void ShowMessageBox(MessageBox messageBox);
 }

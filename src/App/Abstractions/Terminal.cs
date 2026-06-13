@@ -1,4 +1,6 @@
-﻿using Spectre.Console;
+﻿using Debianet.Ui;
+
+using Spectre.Console;
 
 namespace Debianet.Abstractions;
 
@@ -59,4 +61,24 @@ internal sealed class Terminal : ITerminal
         AnsiConsole.Write(figlet);
     }
 
+    public void ShowMessageBox(MessageBox messageBox)
+    {
+        SwitchToAlternateBuffer();
+        Clear();
+
+        int topPad = (Console.WindowHeight / 2) - 4;
+
+        Console.SetCursorPosition(0, topPad);
+
+        var panel = new Panel(messageBox.Message)
+            .Header($"| {messageBox.Title} |", Justify.Center)
+            .HeavyBorder()
+            .BorderColor(_palete.Accent)
+            .Expand();
+
+        AnsiConsole.Write(panel);
+
+        WaitKey();
+        SwitchToMainBuffer();
+    }
 }
