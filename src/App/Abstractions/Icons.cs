@@ -9,4 +9,5 @@ internal static class Icons
     public const string Info = "ℹ️";
     public const string Refresh = "🔄";
     public const string Trash = "🗑️";
+    public const string Text = "📄";
 }

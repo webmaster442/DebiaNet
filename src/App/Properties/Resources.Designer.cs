@@ -160,6 +160,15 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View Changelog....
+        /// </summary>
+        internal static string MainMenu_Changelog {
+            get {
+                return ResourceManager.GetString("MainMenu_Changelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install .NET Tools....
         /// </summary>
         internal static string MainMenu_DotnetToolsInstall {
@@ -219,6 +228,15 @@ namespace Debianet.Properties {
         internal static string StartupCheck_RootUser {
             get {
                 return ResourceManager.GetString("StartupCheck_RootUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        internal static string TextView_Changelog {
+            get {
+                return ResourceManager.GetString("TextView_Changelog", resourceCulture);
             }
         }
     }

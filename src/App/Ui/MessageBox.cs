@@ -1,6 +1,4 @@
-﻿using Debianet.Abstractions;
-
-namespace Debianet.Ui;
+﻿namespace Debianet.Ui;
 
 internal sealed class MessageBox
 {

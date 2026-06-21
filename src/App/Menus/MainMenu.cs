@@ -19,7 +19,7 @@ internal class MainMenu : Menu
 
     public override void BeforeSelection()
     {
-        const string text = """
+        string text = $$"""
                      @                                                            
                  @@@@@@@@@@@@@                                                    
                @@@@         @@@@                                                  
@@ -34,7 +34,8 @@ internal class MainMenu : Menu
               @@                  @@@        @@@@@     @@@@@@@@@@        @@@      
                 @                                                                 
                   @@                                                              
-                      @@
+                      @@  App Version: {{AppVersionProvider.GetAppVersion()}}
+
             """;
 
         _terminal.Info($"{text}");
@@ -56,6 +57,12 @@ internal class MainMenu : Menu
                 Text = Resources.MainMenu_DotnetToolsInstall,
                 Submenu = MenuRegistry.DotnetToolInstaller
             };
+            yield return new DelegateMenuItem
+            {
+                Text = Resources.MainMenu_Changelog,
+                Icon = Icons.Text,
+                Action = DisplayChangeLog
+            };
             yield return new DelegateMenuItem()
             {
                 Text = Resources.MainMenu_Item_Exit,
@@ -63,6 +70,13 @@ internal class MainMenu : Menu
                 Action = Exit
             };
         }
+    }
+
+    private void DisplayChangeLog()
+    {
+        var changelog = ResourceHandler.GetChangeLog();
+        var viewer = new TextViewer(changelog, Resources.TextView_Changelog);
+        viewer.Show();
     }
 
     private void Exit()

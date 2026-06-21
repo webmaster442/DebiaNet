@@ -150,6 +150,9 @@
   <data name="DotnetToolsInstall_Title" xml:space="preserve">
     <value>.NET tool installer</value>
   </data>
+  <data name="MainMenu_Changelog" xml:space="preserve">
+    <value>View Changelog...</value>
+  </data>
   <data name="MainMenu_DotnetToolsInstall" xml:space="preserve">
     <value>Install .NET Tools...</value>
   </data>
@@ -170,5 +173,8 @@
   </data>
   <data name="StartupCheck_RootUser" xml:space="preserve">
     <value>Please run the application as a normal user.</value>
+  </data>
+  <data name="TextView_Changelog" xml:space="preserve">
+    <value>Changelog</value>
   </data>
 </root>
