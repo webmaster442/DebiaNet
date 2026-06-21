@@ -9,10 +9,24 @@
     <Version>$([System.DateTime]::UtcNow.ToString("yyyy")).$([System.DateTime]::UtcNow.ToString("MM")).$([System.DateTime]::UtcNow.ToString("dd")).0</Version>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>..\bin\$(Configuration)\</OutputPath>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Webmaster442</Authors>
+    <PackageProjectUrl>https://github.com/webmaster442/DebiaNet</PackageProjectUrl>
+    <PackageIcon>debianet-128.png</PackageIcon>
+    <RepositoryUrl>https://github.com/webmaster442/DebiaNet</RepositoryUrl>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>debianet</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="..\..\changelog.md" Link="Properties\changelog.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\branding\debianet-128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

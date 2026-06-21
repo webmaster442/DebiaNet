@@ -18,13 +18,11 @@ sudo apt install -y \
     binutils \
     ca-certificates \
     curl \
-    fastfetch \
     git \
     git-lfs \
     gpg \
     htop \
     just \
-    lazygit \
     libxml2 \
     mc \
     openssh-server \
@@ -63,10 +61,6 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 # configure docker user
 sudo usermod -aG docker $USER
-
-# enable docker tcp port for vs debug connecting
-sudo mkdir -p /etc/systemd/system/docker.service.d/
-sudo cp docker-override.conf /etc/systemd/system/docker.service.d/override.conf
 
 # install devtoys.cli
 wget https://github.com/DevToys-app/DevToys/releases/download/v2.0.8.0/devtoys.cli_linux_x64.deb -O devtoys.cli.deb

@@ -31,11 +31,9 @@ The complete list of changes can be found here: [changelog](changelog.md)
 - [DevToys](https://devtoys.app/)
 - [Dive](https://github.com/wagoodman/dive)
 - [docker](https://www.docker.com/)
-- [FastFetch](https://github.com/fastfetch-cli/fastfetch)
 - [git](https://git-scm.com/) with [git-lfs](https://git-lfs.com/)
 - [htop](https://htop.dev/)
 - [just](https://github.com/casey/just)
-- [lazygit](https://github.com/jesseduffield/lazygit)
 - [openssl](https://www.openssl.org/)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [strace](https://strace.io/)
@@ -48,28 +46,6 @@ The complete list of changes can be found here: [changelog](changelog.md)
 
 - [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
 - [Infer#](https://github.com/microsoft/infersharp)
-
-**.NET tools from microsoft**
-
-- [dotnet-counters](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters)
-- [dotnet-coverage](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-coverage)
-- [dotnet-ef](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
-- [dotnet-gcdump](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump)
-- [dotnet-monitor](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-monitor)
-- [dotnet-stack](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-stack)
-- [dotnet-symbol](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-symbol)
-- [dotnet-trace](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
-- [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
-- [slngen](https://github.com/microsoft/slngen)
-- [upgrade-assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
-- [DocFx](https://dotnet.github.io/docfx/index.html)
-
-**3rd party .NET tools**
-
-- [csharprepl](https://github.com/waf/CSharpRepl)
-- [ilspycmd](github.com/icsharpcode/ILSpy)
-- [roslynator](https://github.com/dotnet/roslynator?tab=readme-ov-file#command-line-tool)
-- [Csproj](https://github.com/webmaster442/csproj)
 
 ## Installation
 
@@ -95,12 +71,10 @@ wsl --set-default-version 2
 
 1. Install debian: `wsl --install Debian`
 2. Install user: `user` with password: `pass`
-3. Run install.sh: `./src/install.sh` this will do most of the installing of software
-4. Change to the source directory: `cd src`
-5. Run branding.sh: `sudo ./branding.sh` to do branding
-6. Run install-app.sh: `sudo ./install-app.sh` to install the debianet app.
-7. exit: `exit`
-8. do a shutdown: `wsl --shutdown`
-9.  export: `wsl --export Debian --format tar.xz debiannet.wsl`
-10. unregister debian: `wsl --unregister Debian`
-11. reinstall debianet.wsl
+3. Run commands:
+
+```bash
+cd src
+./install.sh
+./copy-files.sh
+```
