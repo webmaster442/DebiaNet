@@ -120,6 +120,9 @@
   <data name="App_MultiSelectionInstructions" xml:space="preserve">
     <value>(Press &lt;space&gt; to select, &lt;enter&gt; to accept, &lt;esc&gt; to cancel)</value>
   </data>
+  <data name="Dialog_Sysinfo" xml:space="preserve">
+    <value>System Information</value>
+  </data>
   <data name="DotnetMenu_Item_Back" xml:space="preserve">
     <value>Back to main menu</value>
   </data>
@@ -162,6 +165,9 @@
   <data name="MainMenu_Item_Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="MainMenu_SystemInfo" xml:space="preserve">
+    <value>System Info...</value>
+  </data>
   <data name="MainMenu_Title" xml:space="preserve">
     <value>Debianet main menu</value>
   </data>
@@ -173,6 +179,27 @@
   </data>
   <data name="StartupCheck_RootUser" xml:space="preserve">
     <value>Please run the application as a normal user.</value>
+  </data>
+  <data name="SysInfo.Shell" xml:space="preserve">
+    <value>Shell</value>
+  </data>
+  <data name="SysInfo_Cpu" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="SysInfo_Disks" xml:space="preserve">
+    <value>Disks</value>
+  </data>
+  <data name="SysInfo_HostName" xml:space="preserve">
+    <value>Host name</value>
+  </data>
+  <data name="SysInfo_KernelVersion" xml:space="preserve">
+    <value>Kernel Version</value>
+  </data>
+  <data name="SysInfo_Memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="SysInfo_Uptime" xml:space="preserve">
+    <value>Uptime</value>
   </data>
   <data name="TextView_Changelog" xml:space="preserve">
     <value>Changelog</value>

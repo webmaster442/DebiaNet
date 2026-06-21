@@ -1,5 +1,7 @@
 ﻿using Debianet.Ui;
 
+using Spectre.Console.Rendering;
+
 namespace Debianet.Abstractions;
 
 internal interface ITerminal
@@ -18,4 +20,5 @@ internal interface ITerminal
     void WaitKey();
     void Line();
     void ShowMessageBox(MessageBox messageBox);
+    void ShowDialog(string dialogTitle, IRenderable content);
 }

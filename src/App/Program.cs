@@ -5,11 +5,11 @@ var terminal = new Terminal();
 
 GlobalArgHandler.HandleGlobalArgs(args);
 
-//var startupChecks = new StartupChecks(terminal);
-//if (startupChecks.TryCheckExit(out int exitCode))
-//{
-//    return exitCode;
-//}
+var startupChecks = new StartupChecks(terminal);
+if (startupChecks.TryCheckExit(out int exitCode))
+{
+    return exitCode;
+}
 
 var registry = new MenuRegistry(terminal);
 var application = new Application(terminal, registry);

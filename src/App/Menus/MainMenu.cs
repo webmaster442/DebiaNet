@@ -2,6 +2,8 @@
 using Debianet.Properties;
 using Debianet.Ui;
 
+using Spectre.Console;
+
 namespace Debianet.Menus;
 
 internal class MainMenu : Menu
@@ -57,6 +59,12 @@ internal class MainMenu : Menu
                 Text = Resources.MainMenu_DotnetToolsInstall,
                 Submenu = MenuRegistry.DotnetToolInstaller
             };
+            yield return new DelegateTaskMenuItem
+            {
+                Icon = Icons.Computer,
+                Task = SytemInfo,
+                Text = Resources.MainMenu_SystemInfo,
+            };
             yield return new DelegateMenuItem
             {
                 Text = Resources.MainMenu_Changelog,
@@ -70,6 +78,18 @@ internal class MainMenu : Menu
                 Action = Exit
             };
         }
+    }
+
+    private async Task SytemInfo(CancellationToken token)
+    {
+        var grid = new Grid();
+        grid.AddColumn();
+        grid.AddColumn();
+        await foreach (var (property, value) in SystemInfoCollector.CollectSystemInfoAsync())
+        {
+            grid.AddRow(property, value);
+        }
+        _terminal.ShowDialog(Resources.Dialog_Sysinfo, grid);
     }
 
     private void DisplayChangeLog()

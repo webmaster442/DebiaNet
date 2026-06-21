@@ -70,6 +70,15 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System Information.
+        /// </summary>
+        internal static string Dialog_Sysinfo {
+            get {
+                return ResourceManager.GetString("Dialog_Sysinfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to main menu.
         /// </summary>
         internal static string DotnetMenu_Item_Back {
@@ -196,6 +205,15 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System Info....
+        /// </summary>
+        internal static string MainMenu_SystemInfo {
+            get {
+                return ResourceManager.GetString("MainMenu_SystemInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debianet main menu.
         /// </summary>
         internal static string MainMenu_Title {
@@ -228,6 +246,69 @@ namespace Debianet.Properties {
         internal static string StartupCheck_RootUser {
             get {
                 return ResourceManager.GetString("StartupCheck_RootUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Processor.
+        /// </summary>
+        internal static string SysInfo_Cpu {
+            get {
+                return ResourceManager.GetString("SysInfo_Cpu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disks.
+        /// </summary>
+        internal static string SysInfo_Disks {
+            get {
+                return ResourceManager.GetString("SysInfo_Disks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Host name.
+        /// </summary>
+        internal static string SysInfo_HostName {
+            get {
+                return ResourceManager.GetString("SysInfo_HostName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kernel Version.
+        /// </summary>
+        internal static string SysInfo_KernelVersion {
+            get {
+                return ResourceManager.GetString("SysInfo_KernelVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Memory.
+        /// </summary>
+        internal static string SysInfo_Memory {
+            get {
+                return ResourceManager.GetString("SysInfo_Memory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shell.
+        /// </summary>
+        internal static string SysInfo_Shell {
+            get {
+                return ResourceManager.GetString("SysInfo.Shell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uptime.
+        /// </summary>
+        internal static string SysInfo_Uptime {
+            get {
+                return ResourceManager.GetString("SysInfo_Uptime", resourceCulture);
             }
         }
         

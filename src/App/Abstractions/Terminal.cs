@@ -1,6 +1,7 @@
 ﻿using Debianet.Ui;
 
 using Spectre.Console;
+using Spectre.Console.Rendering;
 
 namespace Debianet.Abstractions;
 
@@ -72,6 +73,23 @@ internal sealed class Terminal : ITerminal
 
         var panel = new Panel(messageBox.Message)
             .Header($"| {messageBox.Title} |", Justify.Center)
+            .HeavyBorder()
+            .BorderColor(_palete.Accent)
+            .Expand();
+
+        AnsiConsole.Write(panel);
+
+        WaitKey();
+        SwitchToMainBuffer();
+    }
+
+    public void ShowDialog(string dialogTitle, IRenderable content)
+    {
+        SwitchToAlternateBuffer();
+        Clear();
+
+        var panel = new Panel(content)
+            .Header($"| {dialogTitle} |", Justify.Center)
             .HeavyBorder()
             .BorderColor(_palete.Accent)
             .Expand();
