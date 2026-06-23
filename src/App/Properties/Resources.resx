@@ -123,7 +123,7 @@
   <data name="Dialog_Sysinfo" xml:space="preserve">
     <value>System Information</value>
   </data>
-  <data name="DotnetMenu_Item_Back" xml:space="preserve">
+  <data name="Menu_Item_Back" xml:space="preserve">
     <value>Back to main menu</value>
   </data>
   <data name="DotnetMenu_Item_ClearNugetCache" xml:space="preserve">
@@ -201,7 +201,22 @@
   <data name="SysInfo_Uptime" xml:space="preserve">
     <value>Uptime</value>
   </data>
+  <data name="SystemMenu_Title" xml:space="preserve">
+    <value>System</value>
+  </data>
   <data name="TextView_Changelog" xml:space="preserve">
     <value>Changelog</value>
+  </data>
+  <data name="SystemMenu_AptClean" xml:space="preserve">
+    <value>Clean apt cache...</value>
+  </data>
+  <data name="SystemMenu_Update" xml:space="preserve">
+    <value>System update...</value>
+  </data>
+  <data name="SystemMenu_InstallCpp" xml:space="preserve">
+    <value>Install c/c++ dev tools</value>
+  </data>
+  <data name="MainMenu_System" xml:space="preserve">
+    <value>System...</value>
   </data>
 </root>

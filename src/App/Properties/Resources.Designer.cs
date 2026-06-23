@@ -79,15 +79,6 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back to main menu.
-        /// </summary>
-        internal static string DotnetMenu_Item_Back {
-            get {
-                return ResourceManager.GetString("DotnetMenu_Item_Back", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Clear all local NuGet caches....
         /// </summary>
         internal static string DotnetMenu_Item_ClearNugetCache {
@@ -205,6 +196,15 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System....
+        /// </summary>
+        internal static string MainMenu_System {
+            get {
+                return ResourceManager.GetString("MainMenu_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to System Info....
         /// </summary>
         internal static string MainMenu_SystemInfo {
@@ -219,6 +219,15 @@ namespace Debianet.Properties {
         internal static string MainMenu_Title {
             get {
                 return ResourceManager.GetString("MainMenu_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to main menu.
+        /// </summary>
+        internal static string Menu_Item_Back {
+            get {
+                return ResourceManager.GetString("Menu_Item_Back", resourceCulture);
             }
         }
         
@@ -309,6 +318,42 @@ namespace Debianet.Properties {
         internal static string SysInfo_Uptime {
             get {
                 return ResourceManager.GetString("SysInfo_Uptime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clean apt cache....
+        /// </summary>
+        internal static string SystemMenu_AptClean {
+            get {
+                return ResourceManager.GetString("SystemMenu_AptClean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install c/c++ dev tools.
+        /// </summary>
+        internal static string SystemMenu_InstallCpp {
+            get {
+                return ResourceManager.GetString("SystemMenu_InstallCpp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        internal static string SystemMenu_Title {
+            get {
+                return ResourceManager.GetString("SystemMenu_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System update....
+        /// </summary>
+        internal static string SystemMenu_Update {
+            get {
+                return ResourceManager.GetString("SystemMenu_Update", resourceCulture);
             }
         }
         

@@ -29,7 +29,7 @@ internal class DotnetMenu : Menu
             yield return new ReplaceMenuMenuItem
             {
                 Icon = Icons.Back,
-                Text = Resources.DotnetMenu_Item_Back,
+                Text = Resources.Menu_Item_Back,
                 Submenu = MenuRegistry.Main
             };
             yield return new RunCommandMenuItem(_terminal)

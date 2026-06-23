@@ -59,6 +59,12 @@ internal class MainMenu : Menu
                 Text = Resources.MainMenu_DotnetToolsInstall,
                 Submenu = MenuRegistry.DotnetToolInstaller
             };
+            yield return new ReplaceMenuMenuItem
+            {
+                Icon = Icons.SubMenu,
+                Text = Resources.MainMenu_System,
+                Submenu = MenuRegistry.System,
+            };
             yield return new DelegateTaskMenuItem
             {
                 Icon = Icons.Computer,
