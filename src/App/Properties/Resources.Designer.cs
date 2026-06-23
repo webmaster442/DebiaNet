@@ -79,6 +79,15 @@ namespace Debianet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Docker.
+        /// </summary>
+        internal static string DockerMenu_Title {
+            get {
+                return ResourceManager.GetString("DockerMenu_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear all local NuGet caches....
         /// </summary>
         internal static string DotnetMenu_Item_ClearNugetCache {
@@ -165,6 +174,15 @@ namespace Debianet.Properties {
         internal static string MainMenu_Changelog {
             get {
                 return ResourceManager.GetString("MainMenu_Changelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Docker....
+        /// </summary>
+        internal static string MainMenu_Docker {
+            get {
+                return ResourceManager.GetString("MainMenu_Docker", resourceCulture);
             }
         }
         

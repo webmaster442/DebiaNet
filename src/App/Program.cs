@@ -2,6 +2,7 @@
 using Debianet.Abstractions;
 
 var terminal = new Terminal();
+using var dockerClient = new DockerClient();
 
 GlobalArgHandler.HandleGlobalArgs(args);
 
@@ -11,7 +12,7 @@ if (startupChecks.TryCheckExit(out int exitCode))
     return exitCode;
 }
 
-var registry = new MenuRegistry(terminal);
+var registry = new MenuRegistry(terminal, dockerClient);
 var application = new Application(terminal, registry);
 
 await application.Run();

@@ -219,4 +219,10 @@
   <data name="MainMenu_System" xml:space="preserve">
     <value>System...</value>
   </data>
+  <data name="DockerMenu_Title" xml:space="preserve">
+    <value>Docker</value>
+  </data>
+  <data name="MainMenu_Docker" xml:space="preserve">
+    <value>Docker...</value>
+  </data>
 </root>

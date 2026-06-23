@@ -9,11 +9,13 @@ namespace Debianet.Menus;
 internal class MainMenu : Menu
 {
     private readonly ITerminal _terminal;
+    private readonly IDockerClient _dockerClient;
 
-    public MainMenu(MenuRegistry menuRegistry, ITerminal terminal)
+    public MainMenu(MenuRegistry menuRegistry, ITerminal terminal, IDockerClient dockerClient)
         : base(menuRegistry)
     {
         _terminal = terminal;
+        _dockerClient = dockerClient;
     }
 
     public override string Title
@@ -65,6 +67,17 @@ internal class MainMenu : Menu
                 Text = Resources.MainMenu_System,
                 Submenu = MenuRegistry.System,
             };
+
+            if (DockerClient.IsDockerInstalled())
+            {
+                yield return new ReplaceMenuMenuItem
+                {
+                    Icon = Icons.SubMenu,
+                    Text = Resources.MainMenu_Docker,
+                    Submenu = new DockerMenu(MenuRegistry, _terminal, _dockerClient),
+                };
+            }
+
             yield return new DelegateTaskMenuItem
             {
                 Icon = Icons.Computer,

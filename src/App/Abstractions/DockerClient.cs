@@ -2,7 +2,7 @@
 
 namespace Debianet.Abstractions;
 
-internal sealed class DockerClient
+internal sealed class DockerClient : IDisposable, IDockerClient
 {
     private const string SockerPath = "/var/run/docker.sock";
     private readonly SocketsHttpHandler _handler;
