@@ -18,12 +18,11 @@ sudo apt install -y \
     binutils \
     ca-certificates \
     curl \
-    fastfetch \
     git \
     git-lfs \
     gpg \
     htop \
-    lazygit \
+    just \
     libxml2 \
     mc \
     openssh-server \
@@ -31,7 +30,9 @@ sudo apt install -y \
     strace \
     tmux \
     unzip \
-    wget
+    wget \
+    jq \
+    byobu
 
 # prerpare docker install
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
@@ -61,13 +62,6 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 # configure docker user
 sudo usermod -aG docker $USER
 
-# enable docker tcp port for vs debug connecting
-sudo mkdir -p /etc/systemd/system/docker.service.d/
-sudo cp docker-override.conf /etc/systemd/system/docker.service.d/override.conf
-
-# update dotnet workloads
-sudo dotnet workload update
-
 # install devtoys.cli
 wget https://github.com/DevToys-app/DevToys/releases/download/v2.0.8.0/devtoys.cli_linux_x64.deb -O devtoys.cli.deb
 sudo dpkg -i devtoys.cli.deb
@@ -76,10 +70,19 @@ rm devtoys.cli.deb
 # install VS Remote debugger
 curl -sSL https://aka.ms/getvsdbgsh | /bin/sh /dev/stdin -v latest -l ~/vsdbg
 
+# install infer#
+mkdir -p ~/infersharp
+curl -L https://github.com/microsoft/infersharp/releases/download/v1.5/infersharp-linux64-v1.5.tar.gz -o infersharp.tar.gz
+tar -xvzf infersharp.tar.gz -C ~/infersharp
+rm infersharp.tar.gz
+
 # install ripgrep
 wget https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep_15.1.0-1_amd64.deb -O ripgrep.deb
 sudo dpkg -i ripgrep.deb
 rm ripgrep.deb
+
+# install Fresh
+curl https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh
 
 # install dive
 DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
@@ -87,24 +90,8 @@ curl -fOL "https://github.com/wagoodman/dive/releases/download/v${DIVE_VERSION}/
 sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 rm ./dive_${DIVE_VERSION}_linux_amd64.deb
 
-# install .NET Global tools
-dotnet tool install --global dotnet-counters
-dotnet tool install --global dotnet-coverage
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-gcdump
-dotnet tool install --global dotnet-monitor
-dotnet tool install --global dotnet-stack
-dotnet tool install --global dotnet-symbol
-dotnet tool install --global dotnet-trace
-dotnet tool install --global Microsoft.VisualStudio.SlnGen.Tool
-dotnet tool install --global PowerShell
-dotnet tool install --global upgrade-assistant
-dotnet tool install --global docfx
-
-# install third party dotnet tools
-dotnet tool install --global csharprepl
-dotnet tool install --global ilspycmd
-dotnet tool install --global roslynator.dotnet.cli
+# update dotnet workloads
+sudo dotnet workload update
 
 # set path for dotnet tools
 echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc

@@ -31,37 +31,21 @@ The complete list of changes can be found here: [changelog](changelog.md)
 - [DevToys](https://devtoys.app/)
 - [Dive](https://github.com/wagoodman/dive)
 - [docker](https://www.docker.com/)
-- [FastFetch](https://github.com/fastfetch-cli/fastfetch)
 - [git](https://git-scm.com/) with [git-lfs](https://git-lfs.com/)
 - [htop](https://htop.dev/)
-- [lazygit](https://github.com/jesseduffield/lazygit)
+- [just](https://github.com/casey/just)
 - [openssl](https://www.openssl.org/)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [strace](https://strace.io/)
 - [tmux](https://github.com/tmux/tmux/wiki)
-- [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
 - [wget](https://www.gnu.org/software/wget/)
+- [jq](https://jqlang.org/)
+- [byobu](https://www.byobu.org/)
 
-**.NET tools from microsoft**
+**Apps**
 
-- [dotnet-counters](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters)
-- [dotnet-coverage](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/dotnet-coverage)
-- [dotnet-ef](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
-- [dotnet-gcdump](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump)
-- [dotnet-monitor](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-monitor)
-- [dotnet-stack](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-stack)
-- [dotnet-symbol](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-symbol)
-- [dotnet-trace](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace)
-- [powershell](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux)
-- [sngen](https://github.com/microsoft/slngen)
-- [upgrade-assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
-- [DocFx](https://dotnet.github.io/docfx/index.html)
-
-**3rd party .NET tools**
-
-- [csharprepl](https://github.com/waf/CSharpRepl)
-- [ilspycmd](github.com/icsharpcode/ILSpy)
-- [roslynator](https://github.com/dotnet/roslynator?tab=readme-ov-file#command-line-tool)
+- [Visual studio remote shell](https://learn.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=visualstudio)
+- [Infer#](https://github.com/microsoft/infersharp)
 
 ## Installation
 
@@ -87,11 +71,10 @@ wsl --set-default-version 2
 
 1. Install debian: `wsl --install Debian`
 2. Install user: `user` with password: `pass`
-3. Run install.sh: `./src/install.sh` this will do most of the installing of software
-4. Run branding.sh: `sudo ./src/branding.sh` to do branding
-5. Run install-app.sh: `sudo ./src/install-app.sh` to install the debianet app.
-5. exit: `exit`
-6. do a shutdown: `wsl --shutdown`
-7. export: `wsl --export Debian --format tar.xz debiannet.wsl`
-8. unregister debian: `wsl --unregister Debian`
-9. reinstall debianet.wsl
+3. Run commands:
+
+```bash
+cd src
+./install.sh
+./copy-files.sh
+```

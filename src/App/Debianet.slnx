@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Others/">
+    <File Path="../../changelog.md" />
+    <File Path="../../readme.md" />
+  </Folder>
+  <Project Path="Debianet.csproj" />
+</Solution>
