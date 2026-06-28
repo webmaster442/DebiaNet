@@ -9,3 +9,4 @@ chmod 755 -R ./Root
 cd /Root
 cp -R -f ./etc /etc
 cp -R -f ./usr /usr
+cp -R -f ./debianet /debianet
