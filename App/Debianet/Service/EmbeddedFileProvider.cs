@@ -52,7 +52,7 @@ internal sealed class EmbeddedFileProvider : IEmbededdFileProvider
 
     public Stream GetDataJson()
     {
-        return GetResourceStream("data.json")
+        return GetResourceStream("debianet.json")
             ?? throw new InvalidOperationException("Data JSON resource not found.");
     }
 }

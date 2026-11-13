@@ -1,0 +1,25 @@
+﻿@page
+@model Debianet.Pages.DotnetToolsModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td>Installed?</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Link</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tool in Model.Tools)
+        {
+            <tr>
+                <td>@(tool.IsChecked ? "Yes" : "No")</td>
+                <td>@tool.Name</td>
+                <td>@tool.Description</td>
+                <td><a href="@tool.Link" target="_blank">@tool.Link</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

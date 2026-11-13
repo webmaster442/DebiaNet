@@ -7,7 +7,7 @@ namespace Debianet.Service;
 
 internal sealed class DotnetToolService : IDotnetToolService
 {
-    public async Task<IReadOnlyList<string>> GetInstalledTools()
+    public async Task<IReadOnlyList<string>> GetInstalledToolsAsync()
     {
         BufferedCommandResult result = await Cli.Wrap("dotnet")
             .WithArguments(["tool", "list", "--global"])

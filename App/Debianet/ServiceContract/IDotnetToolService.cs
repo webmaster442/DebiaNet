@@ -2,5 +2,5 @@
 
 internal interface IDotnetToolService
 {
-    Task<IReadOnlyList<string>> GetInstalledTools();
+    Task<IReadOnlyList<string>> GetInstalledToolsAsync();
 }

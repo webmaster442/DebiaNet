@@ -13,6 +13,7 @@ public static class Server
         builder.Services.AddSingleton<IEmbededdFileProvider, Service.EmbeddedFileProvider>();
         builder.Services.AddSingleton<ICommandRunner, Service.CommandRunner>();
         builder.Services.AddSingleton<IDebianetDataProvider, Service.DebianetDataProvider>();
+        builder.Services.AddSingleton<IDotnetToolService, Service.DotnetToolService>();
 
         var app = builder.Build();
         SemaphoreSlim performActionGate = new(initialCount: 1, maxCount: 1);
