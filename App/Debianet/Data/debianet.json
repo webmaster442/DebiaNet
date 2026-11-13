@@ -1,0 +1,123 @@
+{
+  "dotnetTools": [
+    {
+      "name": "dotnet-counters",
+      "description": "Performance monitoring tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters"
+    },
+    {
+      "name": "dotnet-coverage",
+      "description": "Code coverage tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-coverage"
+    },
+    {
+      "name": "dotnet-ef",
+      "description": "Entity Framework Core command-line tools",
+      "link": "https://learn.microsoft.com/en-us/ef/core/cli/dotnet"
+    },
+    {
+      "name": "dotnet-counters",
+      "description": "Performance monitoring tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-counters"
+    },
+    {
+      "name": "dotnet-gcdump",
+      "description": "GC dump tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-gcdump"
+    },
+    {
+      "name": "dotnet-monitor",
+      "description": "Monitoring tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-monitor"
+    },
+    {
+      "name": "dotnet-stack",
+      "description": "Stack trace tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-stack"
+    },
+    {
+      "name": "dotnet-symbol",
+      "description": "Symbol tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-symbol"
+    },
+    {
+      "name": "dotnet-trace",
+      "description": "Trace tool for .NET applications",
+      "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace"
+    },
+    {
+      "name": "Microsoft.VisualStudio.SlnGen.Tool",
+      "description": "Solution generation tool for Visual Studio",
+      "link": "https://learn.microsoft.com/en-us/visualstudio/extensibility/solution-generator"
+    },
+    {
+      "name": "PowerShell",
+      "description": "Command-line shell and scripting language",
+      "link": "https://learn.microsoft.com/en-us/powershell/"
+    },
+    {
+      "name": "docfx",
+      "description": "Static site generator for documentation",
+      "link": "https://dotnet.github.io/docfx/"
+    },
+    {
+      "name": "csharprepl",
+      "description": "C# REPL tool",
+      "link": "https://github.com/waf/CSharpRepl"
+    },
+    {
+      "name": "ilspycmd",
+      "description": "Command-line tool for ILSpy",
+      "link": "https://github.com/icsharpcode/ILSpy"
+    },
+    {
+      "name": "roslynator.dotnet.cli",
+      "description": "Command-line tool for Roslynator",
+      "link": "https://josefpihrt.github.io/docs/roslynator/cli/"
+    },
+    {
+      "name": "CsProj",
+      "description": "Command-line tool for managing C# project files",
+      "link": "https://github.com/webmaster442/csproj"
+    }
+  ],
+  "docker": [
+    {
+      "name": "dillinger",
+      "description": "A Markdown editor",
+      "compose": "$appData/composes/dilinger.yaml",
+      "folders": [
+        "~/.dockerdata/dilinger/config"
+      ],
+      "url": "http://localhost:61000"
+    },
+    {
+      "name": "donetick",
+      "description": "The smart task manager that keeps individuals and families organized with intelligent scheduling and fair task distribution.",
+      "compose": "$appData/composes/donetick.yaml",
+      "folders": [
+        "~/.dockerdata/donetick/data",
+        "~/.dockerdata/donetick/config"
+      ],
+      "url": "http://localhost:61100"
+    },
+    {
+      "name": "Plant UML",
+      "description": "Tool for creating UML diagrams",
+      "compose": "$appData/composes/plantuml.yaml",
+      "url": "http://localhost:61300",
+      "folders": [
+
+      ]
+    },
+    {
+      "name": "drawio",
+      "description": "Diagramming tool for creating flowcharts, UML diagrams, and more",
+      "compose": "$appData/composes/drawio.yaml",
+      "url": "http://localhost:61200",
+      "folders": [
+
+      ]
+    }
+  ]
+}

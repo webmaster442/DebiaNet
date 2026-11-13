@@ -1,0 +1,35 @@
+﻿@page
+@model Debianet.Pages.SystemInfoModel
+@{
+}
+<h1>System Information</h1>
+<table>
+    <tr>
+        <td>Host name</td>
+        <td><pre>@Model.Info.HostName</pre></td>
+    </tr>
+    <tr>
+        <td>Kernel</td>
+        <td><pre>@Model.Info.KernelInfo</pre></td>
+    </tr>
+    <tr>
+        <td>Uptime</td>
+        <td><pre>@Model.Info.UpTime</pre></td>
+    </tr>
+    <tr>
+        <td>Shell</td>
+        <td><pre>@Model.Info.Shell</pre></td>
+    </tr>
+    <tr>
+        <td>Cpu</td>
+        <td><pre>@Model.Info.CpuInfo</pre></td>
+    </tr>
+    <tr>
+        <td>Memory</td>
+        <td><pre>@Model.Info.MemoryInfo</pre></td>
+    </tr>
+    <tr>
+        <td>Disk</td>
+        <td><pre>@Model.Info.DiskInfo</pre></td>
+    </tr>
+</table>

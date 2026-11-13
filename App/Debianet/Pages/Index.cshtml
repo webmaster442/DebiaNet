@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <h1 class="display-4">Debianet</h1>
+    <img src="~/debianet-256.png" style="float: left; margin-right: 1rem; height: 150px;"/>
+    <p>
+        A Debian based WSL Distro for .NET & Docker development based on Debian Trixie WSL distro. The purpose of DebiaNet is to simplify cross-platform .NET development by providing a pre-configured environment. This distribution is tailored for developers who work with .NET, Docker, and related tools, ensuring a seamless and efficient setup on Windows Subsystem for Linux (WSL).
+    </p>
+    <p>
+        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/RenderMarkdown" asp-route-doc="license">License</a>
+        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/RenderMarkdown" asp-route-doc="changelog">Changelog</a>
+        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/System">System</a>
+        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/SystemInfo">System Info</a>
+    </p>
+</div>

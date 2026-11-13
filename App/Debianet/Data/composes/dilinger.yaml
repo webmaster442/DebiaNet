@@ -1,0 +1,12 @@
+services:
+  dillinger:
+    image: lscr.io/linuxserver/dillinger:latest
+    container_name: dillinger
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ~/.dockerdata/dilinger/config:/config
+    ports:
+      - 61000:8080
