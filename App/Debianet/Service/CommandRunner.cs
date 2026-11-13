@@ -13,18 +13,18 @@ internal sealed class CommandRunner : ICommandRunner
         {
             case "aptclean":
                 return CommandBundle.Builder()
-                    .Command("sudo", ["apt", "atuoremove"])
-                    .Command("sudo", ["apt", "clean"])
+                    .Command("sudo", ["-n", "apt-get", "autoremove", "-y"])
+                    .Command("sudo", ["-n", "apt-get", "clean", "-y"])
                     .Build();
             case "aptupdate":
                 return CommandBundle.Builder()
-                    .Command("sudo", ["apt", "update"])
-                    .Command("sudo", ["apt", "upgrade", "-y"])
+                    .Command("sudo", ["-n", "apt-get", "update"])
+                    .Command("sudo", ["-n", "apt-get", "upgrade", "-y"])
                     .Build();
             case "installdevtools":
                 return CommandBundle.Builder()
-                    .Command("sudo", ["apt", "update"])
-                    .Command("sudo", ["apt", "install", "-y", "build-essential", "cmake", "gcc", "g++"])
+                    .Command("sudo", ["-n", "apt-get", "update"])
+                    .Command("sudo", ["-n", "apt-get", "install", "-y", "build-essential", "cmake", "gcc", "g++"])
                     .Build();
             case "list-net-runtimes":
                 return CommandBundle.Create("dotnet", ["--list-runtimes"]);

@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
+using CliWrap;
+
 using Debianet.Domain;
 
 namespace Debianet.Infrastructure;
@@ -57,4 +59,17 @@ internal sealed partial class StartupChecks
         return false;
     }
 
+    internal async Task<bool> TryCheckForSudo()
+    {
+        var result = await Cli.Wrap("sudo")
+            .WithArguments(["echo", "user can sudo"])
+            .WithStandardOutputPipe(PipeTarget.Null)
+            .WithStandardErrorPipe(PipeTarget.Null)
+            .WithValidation(CommandResultValidation.None)
+            .ExecuteAsync();
+
+        Console.WriteLine(result.ExitCode);
+
+        return result.ExitCode == 0;
+    }
 }
