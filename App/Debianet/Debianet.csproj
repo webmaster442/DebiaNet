@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="Debianet.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CliWrap" Version="3.10.5" />
     <PackageReference Include="Markdig" Version="1.6.0" />
     <PackageReference Include="Spectre.Console" Version="0.57.2" />
@@ -16,6 +20,16 @@
   <ItemGroup>
     <EmbeddedResource Include="..\..\changelog.md" Link="Embedded\changelog.md" />
     <EmbeddedResource Include="..\..\LICENCE" Link="Embedded\LICENCE" />
+    <EmbeddedResource Include="Data\debianet.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Data\debianet.json" />
+    <None Update="Data\composes\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

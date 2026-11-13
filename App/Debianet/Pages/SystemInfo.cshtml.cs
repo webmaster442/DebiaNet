@@ -3,6 +3,8 @@ using System.Text.Json;
 using CliWrap;
 
 using Debianet.Domain;
+using Debianet.Domain.ViewModel;
+using Debianet.DomainService;
 using Debianet.Infrastructure;
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -38,6 +40,9 @@ internal class SystemInfoModel : PageModel
 
     public async Task OnGetAsync()
     {
+        var freeOutput = await RunAndGetStdout("free", ["-h"]);
+        var dfOutput = await RunAndGetStdout("df", ["-P", "-h", "-x", "tmpfs", "-x", "overlay", "-x", "devtmpfs"]);
+
         Info = new SystemInfo
         {
             HostName = Environment.MachineName,
@@ -45,8 +50,8 @@ internal class SystemInfoModel : PageModel
             KernelInfo = await RunAndGetStdout("uname", ["-s", "-r"], 1),
             UpTime = await RunAndGetStdout("uptime", ["-p"], 1),
             Shell = await RunAndGetStdout("$SHELL", ["--version"], 1),
-            MemoryInfo = await RunAndGetStdout("free", ["-h"]),
-            DiskInfo = await RunAndGetStdout("df", ["-h", "-x", "tmpfs", "-x", "overlay", "-x", "devtmpfs", "--output=target,size,avail,pcent"])
+            MemoryInfo = TableFactory.FromFreeOutput(freeOutput),
+            DiskInfo = TableFactory.FromDfOutput(dfOutput)
         };
     }
 }

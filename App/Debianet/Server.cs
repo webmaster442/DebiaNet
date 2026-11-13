@@ -10,8 +10,9 @@ public static class Server
 
         // Add services to the container.
         builder.Services.AddRazorPages();
-        builder.Services.AddSingleton<IEmbededdFileProvider, Debianet.Service.EmbeddedFileProvider>();
-        builder.Services.AddSingleton<ICommandRunner, Debianet.Service.CommandRunner>();
+        builder.Services.AddSingleton<IEmbededdFileProvider, Service.EmbeddedFileProvider>();
+        builder.Services.AddSingleton<ICommandRunner, Service.CommandRunner>();
+        builder.Services.AddSingleton<IDebianetDataProvider, Service.DebianetDataProvider>();
 
         var app = builder.Build();
         SemaphoreSlim performActionGate = new(initialCount: 1, maxCount: 1);

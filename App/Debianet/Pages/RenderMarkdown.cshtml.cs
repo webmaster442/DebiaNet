@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Debianet.Pages;
 
-public class RenderMarkdownModel : PageModel
+internal class RenderMarkdownModel : PageModel
 {
     public string RenderedHtml { get; set; } = string.Empty;
 

@@ -49,4 +49,10 @@ internal sealed class EmbeddedFileProvider : IEmbededdFileProvider
         return GetResourceAsString("readme.md")
             ?? throw new InvalidOperationException("Readme resource not found.");
     }
+
+    public Stream GetDataJson()
+    {
+        return GetResourceStream("data.json")
+            ?? throw new InvalidOperationException("Data JSON resource not found.");
+    }
 }

@@ -3,33 +3,51 @@
 @{
 }
 <h1>System Information</h1>
-<table>
+<table class="table">
     <tr>
         <td>Host name</td>
-        <td><pre>@Model.Info.HostName</pre></td>
+        <td>@Model.Info.HostName</td>
     </tr>
     <tr>
         <td>Kernel</td>
-        <td><pre>@Model.Info.KernelInfo</pre></td>
+        <td>@Model.Info.KernelInfo</td>
     </tr>
     <tr>
         <td>Uptime</td>
-        <td><pre>@Model.Info.UpTime</pre></td>
+        <td>@Model.Info.UpTime</td>
     </tr>
     <tr>
         <td>Shell</td>
-        <td><pre>@Model.Info.Shell</pre></td>
+        <td>@Model.Info.Shell</td>
     </tr>
     <tr>
         <td>Cpu</td>
-        <td><pre>@Model.Info.CpuInfo</pre></td>
+        <td>@Model.Info.CpuInfo</td>
     </tr>
+</table>
+
+<h2>Memory Information</h2>
+<table class="table">
+@foreach (var mem in Model.Info.MemoryInfo.Rows)
+{
     <tr>
-        <td>Memory</td>
-        <td><pre>@Model.Info.MemoryInfo</pre></td>
+    @foreach (var col in mem.Columns)
+    {
+        <td>@col</td>
+    }
     </tr>
+}
+</table>
+
+<h2>Disk Information</h2>
+<table class="table">
+@foreach (var mem in Model.Info.DiskInfo.Rows)
+{
     <tr>
-        <td>Disk</td>
-        <td><pre>@Model.Info.DiskInfo</pre></td>
+        @foreach (var col in mem.Columns)
+        {
+            <td>@col</td>
+        }
     </tr>
+}
 </table>

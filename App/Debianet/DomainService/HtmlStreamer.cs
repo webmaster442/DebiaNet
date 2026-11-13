@@ -1,0 +1,93 @@
+﻿using System.Web;
+
+namespace Debianet.DomainService;
+
+public sealed class HtmlStreamer
+{
+    private readonly HttpResponse _response;
+
+    public HtmlStreamer(HttpResponse response)
+    {
+        _response = response;
+    }
+
+    public async Task BegininAsync(string title)
+    {
+        _response.ContentType = "text/html; charset=utf-8";
+
+        await _response.WriteAsync($$"""
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>{{HttpUtility.HtmlEncode(title)}}</title>
+                <style>
+                body {
+                    background: #282A36;
+                    color: #F8F8F2;
+                    font-size: 16px;
+                }
+                .error {
+                    color: #FF5555;
+                }
+                </style>
+            </head>
+            <body>
+            """);
+
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task UnknownActionAsync(string action)
+    {
+        await WriteErrorLineAsync($"Unknown action: {action}");
+        await EndAsync(backButton: true);
+    }
+
+    public async Task BeginPreAsync()
+    {
+        await _response.WriteAsync("<pre>");
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task HeaderAsync(string header)
+    {
+        await _response.WriteAsync($"<h3>{HttpUtility.HtmlEncode(header)}</h3><hr/>{Environment.NewLine}");
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task WriteLineAsync(string line)
+    {
+        await _response.WriteAsync($"{HttpUtility.HtmlEncode(line)}{Environment.NewLine}");
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task WriteErrorLineAsync(string line)
+    {
+        await _response.WriteAsync($"<span class=\"error\">{HttpUtility.HtmlEncode(line)}</span>{Environment.NewLine}");
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task EndPreAsync()
+    {
+        await _response.WriteAsync("</pre>");
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task EndAsync(bool backButton = true)
+    {
+        if (backButton)
+        {
+            await _response.WriteAsync("""
+                <button onclick='history.back()'>Go back...</button>
+            """);
+        }
+        await _response.WriteAsync("""
+            </body>
+            </html>
+            """);
+
+        await _response.Body.FlushAsync();
+    }
+}

@@ -81,7 +81,7 @@
       "link": "https://github.com/webmaster442/csproj"
     }
   ],
-  "docker": [
+  "dockerTools": [
     {
       "name": "dillinger",
       "description": "A Markdown editor",

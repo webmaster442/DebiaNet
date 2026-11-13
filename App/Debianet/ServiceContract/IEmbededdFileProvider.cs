@@ -1,8 +1,9 @@
 ﻿namespace Debianet.ServiceContract;
 
-public interface IEmbededdFileProvider
+internal interface IEmbededdFileProvider
 {
     string GetLicenseText();
     string GetChangeLogMarkdown();
     string GetReadmeMd();
+    Stream GetDataJson();
 }
