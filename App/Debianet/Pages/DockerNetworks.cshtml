@@ -1,0 +1,26 @@
+﻿@page
+@model Debianet.Pages.DockerNetworksModel
+@{
+}
+<h1>Docker Networks</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Scope</td>
+            <td>Driver</td>
+            <td>IPv4</td>
+            <td>IPv6</td>
+        </tr>
+    </thead>
+    @foreach (var network in Model.Networks)
+    {
+        <tr>
+            <td>@network.Name</td>
+            <td>@network.Scope</td>
+            <td>@network.Driver</td>
+            <td>@network.IPv4</td>
+            <td>@network.IPv6</td>
+        </tr>
+    }
+</table>

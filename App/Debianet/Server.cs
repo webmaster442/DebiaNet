@@ -4,6 +4,12 @@ namespace Debianet;
 
 public static class Server
 {
+    private static bool IsSingleAction(PathString pathString)
+    {
+        return pathString.StartsWithSegments("/PerformAction")
+            || pathString.StartsWithSegments("/DotnetToolChange");
+    }
+
     public static async Task RunServerAsync(string[] args, CancellationToken token = default)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -14,13 +20,14 @@ public static class Server
         builder.Services.AddSingleton<ICommandRunner, Service.CommandRunner>();
         builder.Services.AddSingleton<IDebianetDataProvider, Service.DebianetDataProvider>();
         builder.Services.AddSingleton<IDotnetToolService, Service.DotnetToolService>();
+        builder.Services.AddSingleton<IDockerService, Service.DockerService>();
 
         var app = builder.Build();
         SemaphoreSlim performActionGate = new(initialCount: 1, maxCount: 1);
 
         app.Use(async (context, next) =>
         {
-            if (context.Request.Path.StartsWithSegments("/PerformAction"))
+            if (IsSingleAction(context.Request.Path))
             {
                 await performActionGate.WaitAsync(context.RequestAborted);
 

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Debianet.Domain;
+namespace Debianet.Domain.Dto;
 
 internal sealed class LsCpuResult
 {

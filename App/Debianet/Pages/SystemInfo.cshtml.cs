@@ -2,7 +2,7 @@ using System.Text.Json;
 
 using CliWrap;
 
-using Debianet.Domain;
+using Debianet.Domain.Dto;
 using Debianet.Domain.ViewModel;
 using Debianet.DomainService;
 using Debianet.Infrastructure;
