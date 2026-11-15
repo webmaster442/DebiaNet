@@ -46,12 +46,12 @@
       "link": "https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-trace"
     },
     {
-      "name": "Microsoft.VisualStudio.SlnGen.Tool",
+      "name": "microsoft.visualstudio.slngen.tool",
       "description": "Solution generation tool for Visual Studio",
-      "link": "https://learn.microsoft.com/en-us/visualstudio/extensibility/solution-generator"
+      "link": "https://github.com/microsoft/slngen"
     },
     {
-      "name": "PowerShell",
+      "name": "powershell",
       "description": "Command-line shell and scripting language",
       "link": "https://learn.microsoft.com/en-us/powershell/"
     },
@@ -76,7 +76,7 @@
       "link": "https://josefpihrt.github.io/docs/roslynator/cli/"
     },
     {
-      "name": "CsProj",
+      "name": "csproj",
       "description": "Command-line tool for managing C# project files",
       "link": "https://github.com/webmaster442/csproj"
     }

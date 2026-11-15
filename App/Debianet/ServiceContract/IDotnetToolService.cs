@@ -1,6 +1,9 @@
-﻿namespace Debianet.ServiceContract;
+﻿using Debianet.Domain;
+
+namespace Debianet.ServiceContract;
 
 internal interface IDotnetToolService
 {
-    Task<IReadOnlyList<string>> GetInstalledToolsAsync();
+    CommandBundle CreateInstallBundle(IEnumerable<string> toolsToInstall, IEnumerable<string> toolsToUninstall);
+    Task<IReadOnlySet<string>> GetInstalledToolsAsync();
 }

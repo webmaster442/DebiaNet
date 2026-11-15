@@ -7,12 +7,12 @@ namespace Debianet.Service;
 
 internal sealed class DebianetDataProvider : IDebianetDataProvider
 {
-    private readonly DebianetDataProvider _data;
+    private readonly DebianetData _data;
 
     public DebianetDataProvider(IEmbededdFileProvider embededdFileProvider)
     {
         Stream dataStream = embededdFileProvider.GetDataJson();
-        _data = JsonSerializer.Deserialize<DebianetDataProvider>(dataStream)
+        _data = JsonSerializer.Deserialize<DebianetData>(dataStream)
             ?? throw new InvalidOperationException("Failed to deserialize DebianetData from the provided stream.");
     }
 

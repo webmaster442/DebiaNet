@@ -2,24 +2,57 @@
 @model Debianet.Pages.DotnetToolsModel
 @{
 }
-<table class="table">
-    <thead>
-        <tr>
-            <td>Installed?</td>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Link</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var tool in Model.Tools)
-        {
+<h1>.NET Tools Installer</h1>
+<form method="post" asp-page="/DotnetToolChange">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@(tool.IsChecked ? "Yes" : "No")</td>
-                <td>@tool.Name</td>
-                <td>@tool.Description</td>
-                <td><a href="@tool.Link" target="_blank">@tool.Link</a></td>
+                <td>Installed?</td>
+                <td>Name</td>
+                <td>Description</td>
             </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Tools.Length; i++)
+            {
+                var tool = Model.Tools[i];
+                <tr>
+                    <td>
+                        <input asp-for="Tools[i].IsChecked" aria-label="@tool.Name" />
+                        <input type="hidden" asp-for="Tools[i].Name" />
+                    </td>
+                    <td>@tool.Name</td>
+                    <td>
+                        @tool.Description<br /><br />
+                        <a href="@tool.Link" target="_blank">@tool.Link</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-secondary" id="uncheck-all">Uncheck all</button>
+    <button type="button" class="btn btn-secondary" id="check-all">Check all</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+</form>
+
+@section Scripts {
+    <script>
+        const uncheckAllButton = document.getElementById('uncheck-all');
+        if (uncheckAllButton) {
+            uncheckAllButton.addEventListener('click', () => {
+                uncheckAllButton.form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            });
         }
-    </tbody>
-</table>
+        const checkAllButton = document.getElementById('check-all');
+        if (checkAllButton) {
+            checkAllButton.addEventListener('click', () => {
+                checkAllButton.form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = true;
+                });
+            });
+        }
+    </script>
+}
