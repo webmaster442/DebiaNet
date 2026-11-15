@@ -4,6 +4,6 @@ namespace Debianet.ServiceContract;
 
 internal interface IDebianetDataProvider
 {
-    IReadOnlyList<DotnetTool> DotnetTools { get; }
-    IReadOnlyList<DockerTool> DockerTools { get; }
+    IEnumerable<DotnetTool> DotnetTools { get; }
+    IEnumerable<DockerTool> DockerTools { get; }
 }

@@ -1,4 +1,5 @@
 ﻿using CliWrap;
+using CliWrap.Buffered;
 
 using Debianet.Domain;
 using Debianet.ServiceContract;
@@ -47,11 +48,11 @@ internal sealed class CommandRunner : ICommandRunner
         }
     }
 
-    public async Task RunCommandsAsync(CommandBundle commandBundle,
-                                       Func<string, Task> info,
-                                       Func<string, Task> stdErr,
-                                       Func<string, Task> stdOut,
-                                       CancellationToken cancellationToken)
+    public async Task<bool> RunCommandsAsync(CommandBundle commandBundle,
+                                             Func<string, Task> info,
+                                             Func<string, Task> stdErr,
+                                             Func<string, Task> stdOut,
+                                             CancellationToken cancellationToken)
     {
         TimeSpan totalTime = TimeSpan.Zero;
         bool success = true;
@@ -87,5 +88,20 @@ internal sealed class CommandRunner : ICommandRunner
 
         await info($"{(success ? "Success" : "Failure")}, Total execution time: {totalTime}");
 
+        return success;
+
     }
+
+    public async Task<Result<string>> CaptureCommandOutputAsync(Domain.Command command, CancellationToken cancellationToken)
+    {
+        BufferedCommandResult result = await Cli.Wrap(command.Program)
+            .WithArguments(command.Arguments)
+            .WithValidation(CommandResultValidation.None)
+            .ExecuteBufferedAsync(cancellationToken);
+
+        return result.ExitCode != 0
+            ? (Result<string>)new Error($"Command failed with exit code: {result.ExitCode}, Error: {result.StandardError}")
+            : (Result<string>)result.StandardOutput;
+    }
+
 }

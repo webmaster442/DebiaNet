@@ -1,10 +1,16 @@
 # Changelog
 
+## 2026.11.x
+- DebiaNet app is now based on ASP.NET
+- .NET 10
+- .NET 11
+
 ## 2026.06.21
 - New DebiaNet app
 - Removed .NET tools from base install, can be installed via the DebiaNet app
 
 ## 2026.04.04 - Version 26.04
+
 - Based on Debian
 - Added byobu to default install
 - Added just to default install
@@ -15,4 +21,5 @@
 - .NET 10.0.5
 
 ## 2025.12.27 - Initial release
+
 - Initial 'beta' release for testing

@@ -39,6 +39,12 @@ public sealed class HtmlStreamer
         await _response.Body.FlushAsync();
     }
 
+    private async Task Scroll()
+    {
+        await _response.WriteAsync("<script>window.scrollTo({ top: document.body.scrollHeight, behavior: \"smooth\" });</script>");
+        await _response.WriteAsync(Environment.NewLine);
+    }
+
     public async Task UnknownActionAsync(string action)
     {
         await WriteErrorLineAsync($"Unknown action: {action}");
@@ -48,30 +54,35 @@ public sealed class HtmlStreamer
     public async Task BeginPreAsync()
     {
         await _response.WriteAsync("<pre>");
+        await Scroll();
         await _response.Body.FlushAsync();
     }
 
     public async Task HeaderAsync(string header)
     {
         await _response.WriteAsync($"<h3>{HttpUtility.HtmlEncode(header)}</h3><hr/>{Environment.NewLine}");
+        await Scroll();
         await _response.Body.FlushAsync();
     }
 
     public async Task WriteLineAsync(string line)
     {
         await _response.WriteAsync($"{HttpUtility.HtmlEncode(line)}{Environment.NewLine}");
+        await Scroll();
         await _response.Body.FlushAsync();
     }
 
     public async Task WriteErrorLineAsync(string line)
     {
         await _response.WriteAsync($"<span class=\"error\">{HttpUtility.HtmlEncode(line)}</span>{Environment.NewLine}");
+        await Scroll();
         await _response.Body.FlushAsync();
     }
 
     public async Task EndPreAsync()
     {
         await _response.WriteAsync("</pre>");
+        await Scroll();
         await _response.Body.FlushAsync();
     }
 
@@ -83,6 +94,9 @@ public sealed class HtmlStreamer
                 <button onclick='history.back()'>Go back...</button>
             """);
         }
+
+        await Scroll();
+
         await _response.WriteAsync("""
             </body>
             </html>

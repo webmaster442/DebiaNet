@@ -16,9 +16,9 @@ internal sealed class DebianetDataProvider : IDebianetDataProvider
             ?? throw new InvalidOperationException("Failed to deserialize DebianetData from the provided stream.");
     }
 
-    public IReadOnlyList<DotnetTool> DotnetTools
-        => _data.DotnetTools;
+    public IEnumerable<DotnetTool> DotnetTools
+        => _data.DotnetTools.OrderBy(x => x.Name);
 
-    public IReadOnlyList<DockerTool> DockerTools
-        => _data.DockerTools;
+    public IEnumerable<DockerTool> DockerTools
+        => _data.DockerTools.OrderBy(x => x.Name);
 }

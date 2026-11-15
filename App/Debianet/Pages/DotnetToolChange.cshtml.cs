@@ -43,15 +43,25 @@ internal sealed class DotnetToolChangeModel : PageModel
             return BadRequest(ModelState);
         }
 
-        IReadOnlySet<string> currentlyInstalled = await _dotnetToolService.GetInstalledToolsAsync();
+        var currentlyInstalled = await _dotnetToolService.GetInstalledToolsAsync(Request.HttpContext.RequestAborted);
+
+        if (currentlyInstalled.Value is Error error)
+        {
+            return BadRequest(error.Message);
+        }
+        
+        if (currentlyInstalled.Value is not IReadOnlySet<string> installedTools)
+        {
+            return BadRequest("Unexpected result from GetInstalledToolsAsync.");
+        }
 
         List<string> toolsToInstall = Tools
-            .Where(t => t.IsChecked && !currentlyInstalled.Contains(t.Name))
+            .Where(t => t.IsChecked && !installedTools.Contains(t.Name))
             .Select(t => t.Name)
             .ToList();
 
         List<string> toolsToUninstall = Tools
-            .Where(t => !t.IsChecked && currentlyInstalled.Contains(t.Name))
+            .Where(t => !t.IsChecked && installedTools.Contains(t.Name))
             .Select(t => t.Name)
             .ToList();
 
@@ -77,6 +87,4 @@ internal sealed class DotnetToolChangeModel : PageModel
 
         return new EmptyResult();
     }
-
-
 }

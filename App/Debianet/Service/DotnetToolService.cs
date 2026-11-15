@@ -1,5 +1,4 @@
-﻿using CliWrap;
-using CliWrap.Buffered;
+﻿using System.Diagnostics;
 
 using Debianet.Domain;
 using Debianet.ServiceContract;
@@ -8,34 +7,43 @@ namespace Debianet.Service;
 
 internal sealed class DotnetToolService : IDotnetToolService
 {
-    public async Task<IReadOnlySet<string>> GetInstalledToolsAsync()
+    private readonly ICommandRunner _commandRunner;
+
+    public DotnetToolService(ICommandRunner commandRunner)
     {
-        BufferedCommandResult result = await Cli.Wrap("dotnet")
-            .WithArguments(["tool", "list", "--global"])
-            .ExecuteBufferedAsync();
+        _commandRunner = commandRunner;
+    }
 
-        if (result.ExitCode != 0)
-        {
-            throw new InvalidOperationException($"Failed to list installed dotnet tools: {result.StandardError}");
-        }
+    public async Task<Result<IReadOnlySet<string>>> GetInstalledToolsAsync(CancellationToken cancellationToken)
+    {
 
-        HashSet<string> tools = [];
-        foreach (string line in result.StandardOutput.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("dotnet", ["tool", "list", "-g"]).Commands.First(), cancellationToken);
+
+        if (result.Value is Error error)
+            return error;
+
+        if (result.Value is string str)
         {
-            if (line.StartsWith("Package Id", StringComparison.OrdinalIgnoreCase) ||
-                line.StartsWith("---", StringComparison.Ordinal))
+            HashSet<string> tools = [];
+            foreach (string line in str.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
             {
-                continue;
+                if (line.StartsWith("Package Id", StringComparison.OrdinalIgnoreCase) ||
+                    line.StartsWith("---", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                if (parts.Length > 0)
+                {
+                    tools.Add(parts[0]);
+                }
             }
 
-            string[] parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            if (parts.Length > 0)
-            {
-                tools.Add(parts[0]);
-            }
+            return tools;
         }
-
-        return tools;
+        
+        throw new UnreachableException("This code should be unreachable.");
     }
 
     public CommandBundle CreateInstallBundle(IEnumerable<string> toolsToInstall, IEnumerable<string> toolsToUninstall)
