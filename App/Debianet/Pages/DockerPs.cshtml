@@ -2,3 +2,33 @@
 @model Debianet.Pages.DockerPsModel
 @{
 }
+<h1>Running Docker containers</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Names</td>
+            <td>Image</td>
+            <td>Command</td>
+            <td>Created At</td>
+            <td>Status</td>
+            <td>Mounts</td>
+            <td>Networks</td>
+            <td>Ports</td>
+        </tr>
+    </thead>
+    @foreach (var process in Model.DockerPs)
+    {
+        <tr>
+            <td>@process.ID</td>
+            <td>@process.Names</td>
+            <td>@process.Image</td>
+            <td>@process.Command</td>
+            <td>@process.CreatedAt</td>
+            <td>@process.Status</td>
+            <td>@process.Mounts</td>
+            <td>@process.Networks</td>
+            <td>@process.Ports</td>
+        </tr>
+    }
+</table>

@@ -98,4 +98,24 @@ internal sealed class DockerService : IDockerService
 
         throw new UnreachableException("Unexpected result type from command runner.");
     }
+
+    public async Task<Result<IReadOnlyList<DockerVolumeResult>>> GetVolumesAsync(CancellationToken cancellationToken)
+    {
+        if (!_isDockerInstalled)
+            return new Error("Docker is not installed or the Docker daemon is not running.");
+
+        var result = await _commandRunner.CaptureCommandOutputAsync(new Command
+        {
+            Program = "docker",
+            Arguments = ["volume", "ls", "--format", "json"]
+        }, cancellationToken);
+
+        if (result.Value is Error error)
+            return error;
+
+        if (result.Value is string output)
+            return Parse<DockerVolumeResult>(output);
+
+        throw new UnreachableException("Unexpected result type from command runner.");
+    }
 }

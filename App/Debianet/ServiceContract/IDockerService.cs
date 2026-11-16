@@ -8,4 +8,5 @@ internal interface IDockerService
     Task<Result<IReadOnlyList<DockerPsResult>>> GetPsAsync(CancellationToken cancellationToken);
     Task<Result<IReadOnlyList<DockerImageResult>>> GetImagesAsync(CancellationToken cancellationToken);
     Task<Result<IReadOnlyList<DockerNetworkResult>>> GetNetworksAsync(CancellationToken cancellationToken);
+    Task<Result<IReadOnlyList<DockerVolumeResult>>> GetVolumesAsync(CancellationToken cancellationToken);
 }

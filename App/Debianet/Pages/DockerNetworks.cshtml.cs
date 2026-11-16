@@ -24,7 +24,6 @@ internal class DockerNetworksModel : PageModel
 
         if (networksResult.Value is Error error)
         {
-            // Handle the error appropriately, e.g., log it or display a message to the user
             Networks = Array.Empty<DockerNetworkResult>();
             return BadRequest(error.Message);
         }

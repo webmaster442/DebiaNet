@@ -1,0 +1,29 @@
+﻿@page
+@model Debianet.Pages.DockerVolumesModel
+@{
+}
+<h1>Docker Volumes</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name & Mount</th>
+            <th>Labels</th>
+            <th>Driver</th>
+            <th>Size</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var volume in Model.Volumes)
+        {
+            <tr>
+                <td style="word-wrap: break-word;">
+                    @volume.Name<br/>
+                    @volume.Mountpoint
+                    </td>
+                <td style="word-wrap: break-word;">@volume.Labels</td>
+                <td style="word-wrap: break-word;">@volume.Driver</td>
+                <td style="word-wrap: break-word;">@volume.Size</td>
+            </tr>
+        }
+    </tbody>
+</table>

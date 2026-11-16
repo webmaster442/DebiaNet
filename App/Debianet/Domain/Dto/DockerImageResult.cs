@@ -2,6 +2,7 @@
 
 namespace Debianet.Domain.Dto;
 
+
 internal sealed class DockerImageResult
 {
     [JsonPropertyName("Containers")]

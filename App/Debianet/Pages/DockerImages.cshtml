@@ -2,3 +2,31 @@
 @model Debianet.Pages.DockerImagesModel
 @{
 }
+<h1>Docker Images</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Repository</td>
+            <td>Tag</td>
+            <td>Size</td>
+            <td>Shared Size</td>
+            <td>Unique Size</td>
+            <td>Created At</td>
+            <td>Digest</td>
+        </tr>
+    </thead>
+    @foreach (var image in Model.Images)
+    {
+        <tr>
+            <td>@image.ID</td>
+            <td>@image.Repository</td> 
+            <td>@image.Tag</td>
+            <td>@image.Size</td>
+            <td>@image.SharedSize</td>
+            <td>@image.UniqueSize</td>
+            <td>@image.CreatedAt</td>
+            <td>@image.Digest</td>
+        </tr>
+    }
+</table>
