@@ -16,6 +16,9 @@ public class DockerTool
     [JsonPropertyName("folders")]
     public required string[] Folders { get; set; }
 
+    [JsonPropertyName("link")]
+    public required string Link { get; set; }
+
     [JsonPropertyName("url")]
     public required string Url { get; set; }
 }

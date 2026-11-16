@@ -24,19 +24,23 @@
                             <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/System">System</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/SystemInfo">System Info</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/DotnetTools">.NET tools installer</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Docker
+                                Manage
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-page="/System">System</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/DotnetTools">.NET tools installer</a>
+                                <a class="dropdown-item" asp-area="" asp-page="/DockerTools">Docker tools</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownDocker" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Docker
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownDocker">
                                 <a class="dropdown-item" asp-area="" asp-page="/DockerPs">Running containers</a>
                                 <a class="dropdown-item" asp-area="" asp-page="/DockerImages">Images</a>
                                 <a class="dropdown-item" asp-area="" asp-page="/DockerNetworks">Networks</a>

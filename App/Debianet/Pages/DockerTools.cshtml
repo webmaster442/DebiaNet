@@ -1,0 +1,42 @@
+﻿@page
+@model Debianet.Pages.DockerToolsModel
+@{
+}
+<h1>Docker tools</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tool in Model.DockerTools)
+        {
+            <tr>
+                <td>@tool.Name</td>
+                <td>
+                    @tool.Description<br />
+                    <a href="@tool.Link" target="_blank">@tool.Link</a>
+                </td>
+                <td>
+                    <form method="post" asp-page="/DockerToolChange">
+                        @if (string.IsNullOrEmpty(tool.ContainerId))
+                        {
+                            <button type="submit" class="btn btn-primary">Start</button>
+                            <input type="hidden" asp-for="@tool.Name" />
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-secondary">Stop</button>
+                            <input type="hidden" asp-for="@tool.Name" />
+                            <input type="hidden" asp-for="@tool.ContainerId" />
+                            <a href="@tool.Url">Open</a>
+                        }
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

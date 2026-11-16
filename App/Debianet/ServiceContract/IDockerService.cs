@@ -1,4 +1,5 @@
 ﻿using Debianet.Domain;
+using Debianet.Domain.DataModel;
 using Debianet.Domain.Dto;
 
 namespace Debianet.ServiceContract;

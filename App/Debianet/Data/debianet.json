@@ -85,9 +85,10 @@
     {
       "name": "dillinger",
       "description": "A Markdown editor",
-      "compose": "$appData/composes/dilinger.yaml",
+      "compose": "$appData/composes/dillinger.yaml",
+      "link": "https://dillinger.io/",
       "folders": [
-        "~/.dockerdata/dilinger/config"
+        "~/.dockerdata/dillinger/config"
       ],
       "url": "http://localhost:61000"
     },
@@ -95,6 +96,7 @@
       "name": "donetick",
       "description": "The smart task manager that keeps individuals and families organized with intelligent scheduling and fair task distribution.",
       "compose": "$appData/composes/donetick.yaml",
+      "link": "https://donetick.com/",
       "folders": [
         "~/.dockerdata/donetick/data",
         "~/.dockerdata/donetick/config"
@@ -105,6 +107,7 @@
       "name": "Plant UML",
       "description": "Tool for creating UML diagrams",
       "compose": "$appData/composes/plantuml.yaml",
+      "link": "https://plantuml.com/",
       "url": "http://localhost:61300",
       "folders": [
 
@@ -114,6 +117,7 @@
       "name": "drawio",
       "description": "Diagramming tool for creating flowcharts, UML diagrams, and more",
       "compose": "$appData/composes/drawio.yaml",
+      "link": "https://www.diagrams.net/",
       "url": "http://localhost:61200",
       "folders": [
 

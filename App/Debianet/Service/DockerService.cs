@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 
 using Debianet.Domain;
+using Debianet.Domain.DataModel;
 using Debianet.Domain.Dto;
 using Debianet.ServiceContract;
 

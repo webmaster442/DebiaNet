@@ -21,6 +21,7 @@ public static class Server
         builder.Services.AddSingleton<IDebianetDataProvider, Service.DebianetDataProvider>();
         builder.Services.AddSingleton<IDotnetToolService, Service.DotnetToolService>();
         builder.Services.AddSingleton<IDockerService, Service.DockerService>();
+        builder.Services.AddSingleton<IFileSystemService, Service.FileSystemService>();
 
         var app = builder.Build();
         SemaphoreSlim performActionGate = new(initialCount: 1, maxCount: 1);
