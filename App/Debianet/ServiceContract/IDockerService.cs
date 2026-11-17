@@ -1,5 +1,4 @@
 ﻿using Debianet.Domain;
-using Debianet.Domain.DataModel;
 using Debianet.Domain.Dto;
 
 namespace Debianet.ServiceContract;
@@ -10,4 +9,5 @@ internal interface IDockerService
     Task<Result<IReadOnlyList<DockerImageResult>>> GetImagesAsync(CancellationToken cancellationToken);
     Task<Result<IReadOnlyList<DockerNetworkResult>>> GetNetworksAsync(CancellationToken cancellationToken);
     Task<Result<IReadOnlyList<DockerVolumeResult>>> GetVolumesAsync(CancellationToken cancellationToken);
+    Task<Result<string>> GetComposeContainerId(string? composeFilePath, CancellationToken cancellationToken);
 }

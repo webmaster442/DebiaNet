@@ -30,11 +30,11 @@ internal sealed class DotnetToolChangeModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        for (var i = 0; i < Tools.Length; i++)
+        foreach (var tool in Tools)
         {
-            if (!_knownTools.Contains(Tools[i].Name))
+            if (!_knownTools.Contains(tool.Name))
             {
-                ModelState.AddModelError($"Tools[{i}].Name", "Unknown tool name.");
+                ModelState.AddModelError($"{tool.Name}", "Unknown tool name.");
             }
         }
 
@@ -80,10 +80,7 @@ internal sealed class DotnetToolChangeModel : PageModel
 
 
         await stream.EndPreAsync();
-
         await stream.EndAsync(backButton: true);
-
-        await Response.Body.FlushAsync();
 
         return new EmptyResult();
     }

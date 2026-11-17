@@ -2,6 +2,7 @@
 @model Debianet.Pages.DockerToolsModel
 @{
 }
+
 <h1>Docker tools</h1>
 <table class="table">
     <thead>
@@ -22,17 +23,16 @@
                 </td>
                 <td>
                     <form method="post" asp-page="/DockerToolChange">
+                        <input type="hidden" asp-for="@tool.Name" name="ToolName" />
+                        <input type="hidden" asp-for="@tool.ContainerId" name="ContainerId" />
                         @if (string.IsNullOrEmpty(tool.ContainerId))
                         {
                             <button type="submit" class="btn btn-primary">Start</button>
-                            <input type="hidden" asp-for="@tool.Name" />
                         }
                         else
                         {
-                            <button type="submit" class="btn btn-secondary">Stop</button>
-                            <input type="hidden" asp-for="@tool.Name" />
-                            <input type="hidden" asp-for="@tool.ContainerId" />
-                            <a href="@tool.Url">Open</a>
+                            <button type="submit" class="btn btn-secondary">Stop</button> 
+                            <a class="btn btn-light" href="@tool.Url" target="_blank">Open</a>
                         }
                     </form>
                 </td>

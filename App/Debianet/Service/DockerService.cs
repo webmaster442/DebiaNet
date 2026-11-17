@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 
 using Debianet.Domain;
-using Debianet.Domain.DataModel;
 using Debianet.Domain.Dto;
 using Debianet.ServiceContract;
 
@@ -116,6 +115,29 @@ internal sealed class DockerService : IDockerService
 
         if (result.Value is string output)
             return Parse<DockerVolumeResult>(output);
+
+        throw new UnreachableException("Unexpected result type from command runner.");
+    }
+
+    public async Task<Result<string>> GetComposeContainerId(string? composeFilePath, CancellationToken cancellationToken)
+    {
+        if (!_isDockerInstalled)
+            return new Error("Docker is not installed or the Docker daemon is not running.");
+
+        if (string.IsNullOrEmpty(composeFilePath))
+            return string.Empty;
+
+        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(new Command
+        {
+            Program = "docker",
+            Arguments = ["compose", "-f", composeFilePath, "ps", "-q"]
+        }, cancellationToken);
+
+        if (result.Value is Error error)
+            return error;
+
+        if (result.Value is string output)
+            return output;
 
         throw new UnreachableException("Unexpected result type from command runner.");
     }

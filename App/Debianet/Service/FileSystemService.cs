@@ -31,6 +31,12 @@ internal sealed class FileSystemService : IFileSystemService
         }
     }
 
+    public bool FileExists(string path)
+    {
+        var resolvedPath = ResolvePath(path);
+        return resolvedPath != null && File.Exists(resolvedPath);
+    }
+
     public string? ResolvePath(string path)
     {
         if (path.StartsWith("~")) {

@@ -25,4 +25,11 @@ public sealed class Result<TSuccess>
         => new(error);
 
     public object Value => _isSuccess ? _success! : _error!;
+
+    public override string ToString()
+    {
+        return _isSuccess
+            ? $"Success: {_success}"
+            : $"Error: {_error}";
+    }
 }

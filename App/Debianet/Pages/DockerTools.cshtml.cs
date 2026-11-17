@@ -1,6 +1,8 @@
+using Debianet.Domain;
 using Debianet.Domain.ViewModel;
 using Debianet.ServiceContract;
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Debianet.Pages;
@@ -8,23 +10,41 @@ namespace Debianet.Pages;
 internal class DockerToolsModel : PageModel
 {
     private readonly IDebianetDataProvider _dataProvider;
+    private readonly IDockerService _dockerService;
+    private readonly IFileSystemService _fileSystemService;
 
-    public DockerToolViewModel[] DockerTools { get; set; } = null!;
+    public List<DockerToolViewModel> DockerTools { get; set; } = null!;
 
-    public DockerToolsModel(IDebianetDataProvider dataProvider)
+    public DockerToolsModel(IDebianetDataProvider dataProvider,
+                            IDockerService dockerService,
+                            IFileSystemService fileSystemService)
     {
         _dataProvider = dataProvider;
+        _dockerService = dockerService;
+        _fileSystemService = fileSystemService;
     }
 
-    public void OnGet()
+    public async Task<IActionResult> OnGetAsync()
     {
-        DockerTools = _dataProvider.DockerTools.Select(x => new DockerToolViewModel
+        DockerTools = new List<DockerToolViewModel>();
+        foreach (var tool in _dataProvider.DockerTools)
         {
-            Name = x.Name,
-            Description = x.Description,
-            Url = x.Url,
-            Link = x.Link,
-            ContainerId = null,
-        }).ToArray();
+            string? composeFilePath = _fileSystemService.ResolvePath(tool.Compose);
+
+            Result<string> containerId = await _dockerService.GetComposeContainerId(composeFilePath, HttpContext.RequestAborted);
+
+            string? containerIdValue = containerId.Value is string value ? value : null;
+
+            DockerTools.Add(new DockerToolViewModel
+            {
+                Name = tool.Name,
+                Description = tool.Description,
+                Url = tool.Url,
+                Link = tool.Link,
+                ContainerId = containerIdValue,
+            });
+        }
+
+        return Page();
     }
 }
