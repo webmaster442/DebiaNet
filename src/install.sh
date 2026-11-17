@@ -97,7 +97,6 @@ sudo dotnet workload update
 echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc
 echo 'eval "$(dotnet completions script bash)"' >> ~/.bashrc
 export PATH="$PATH:$HOME/.dotnet/tools"
-pwsh postinstall.ps1
 
 # cleanup
 sudo apt autoremove -y
