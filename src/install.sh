@@ -54,7 +54,7 @@ rm packages-microsoft-prod.deb
 sudo apt update
 
 # install .net
-sudo apt install -y dotnet-sdk-10.0 dotnet-sdk-9.0 dotnet-sdk-8.0
+sudo apt install -y dotnet-sdk-11.0 dotnet-sdk-10.0
 
 # install docker
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
