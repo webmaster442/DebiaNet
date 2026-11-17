@@ -34,16 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\composes\dilinger\dilinger.yaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\composes\donetick\donetick.yaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\composes\drawio\drawio.yaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\composes\plantuml\plantuml.yaml">
+    <None Update="Data\composes\*\*.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
