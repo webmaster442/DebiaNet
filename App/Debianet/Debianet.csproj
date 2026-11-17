@@ -31,7 +31,19 @@
 
   <ItemGroup>
     <Content Remove="Data\debianet.json" />
-    <None Update="Data\composes\*">
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\composes\dilinger\dilinger.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\composes\donetick\donetick.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\composes\drawio\drawio.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\composes\plantuml\plantuml.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
