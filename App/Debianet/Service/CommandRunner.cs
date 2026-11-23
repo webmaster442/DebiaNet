@@ -57,7 +57,7 @@ internal sealed class CommandRunner : ICommandRunner
                 await info($"Executing command: {command}");
 
                 CommandResult cmdResult = await Cli.Wrap(command.Program)
-                    .WithArguments(command.Arguments)
+                    .WithArguments(command.Arguments, true)
                     .WithStandardErrorPipe(PipeTarget.ToDelegate(stdErr))
                     .WithStandardOutputPipe(PipeTarget.ToDelegate(stdOut))
                     .WithValidation(CommandResultValidation.None)

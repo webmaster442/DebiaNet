@@ -79,6 +79,41 @@
       "name": "csproj",
       "description": "Command-line tool for managing C# project files",
       "link": "https://github.com/webmaster442/csproj"
+    },
+    {
+      "name": "cake.tool",
+      "description": "Cake .NET Tool is a runner which allows to run Cake scripts.",
+      "link": "https://cakebuild.net/docs/running-builds/runners/dotnet-tool"
+    },
+    {
+      "name": "gitversion.tool",
+      "description": "Versioning when using Git, solved. GitVersion looks at your git history and works out the Semantic Version of the commit being built.",
+      "link": "https://github.com/GitTools/GitVersion"
+    },
+    {
+      "name": "coverlet.console",
+      "description": "Coverlet is a cross platform code coverage framework for .NET, with support for line, branch and method coverage. It works with .NET Framework on Windows and .NET Core on all supported platforms.",
+      "link": "https://github.com/coverlet-coverage/coverlet"
+    },
+    {
+      "name": "paket",
+      "description": "Paket is a dependency manager for .NET projects. Paket enables precise and predictable control over your dependencies.",
+      "link": "https://fsprojects.github.io/Paket/"
+    },
+    {
+      "name": "microsoft.openapi.kiota",
+      "description": "Kiota is a command line tool for generating an API client to call any OpenAPI described API you are interested in. The goal is to eliminate the need to take a dependency on a different API SDK for every API that you need to call.",
+      "link": "https://github.com/microsoft/kiota"
+    },
+    {
+      "name": "aspire.cli",
+      "description": "Aspire is a multi-language, code-first toolchain for building, running, and deploying distributed applications.",
+      "link": "https://github.com/microsoft/aspire"
+    },
+    {
+      "name": "dotnet-aspnet-codegenerator",
+      "description": "The dotnet aspnet-codegenerator command runs the ASP.NET Core scaffolding engine. Running the dotnet aspnet-codegenerator command is required to scaffold from the command line or when using Visual Studio Code.",
+      "link": "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/tools/dotnet-aspnet-codegenerator"
     }
   ],
   "dockerTools": [
@@ -119,6 +154,16 @@
       "compose": "$appData/composes/drawio/drawio.yaml",
       "link": "https://www.diagrams.net/",
       "url": "http://localhost:61200",
+      "folders": [
+
+      ]
+    },
+    {
+      "name": "excalidraw",
+      "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
+      "compose": "$appData/composes/excalidraw/excalidraw.yaml",
+      "link": "https://excalidraw.com/",
+      "url": "http://localhost:61400",
       "folders": [
 
       ]

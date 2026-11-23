@@ -73,7 +73,7 @@ public sealed class HtmlStreamer
 
     public async Task WriteErrorLineAsync(string line)
     {
-        await _response.WriteAsync($"<span class=\"error\">{HttpUtility.HtmlEncode(line)}</span>{Environment.NewLine}");
+        await _response.WriteAsync($"<span class=\"error\">{HttpUtility.HtmlEncode(line)}</span><br/>{Environment.NewLine}");
         await Scroll();
         await _response.Body.FlushAsync();
     }

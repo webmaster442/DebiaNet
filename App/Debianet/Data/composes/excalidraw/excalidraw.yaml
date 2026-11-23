@@ -1,0 +1,8 @@
+﻿services:
+  excalidraw:
+    build:
+      context: .
+    image: excalidraw/excalidraw:latest
+    container_name: excalidraw
+    ports:
+      - "61400:80"
