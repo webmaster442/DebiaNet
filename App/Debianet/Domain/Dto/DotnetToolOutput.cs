@@ -2,7 +2,7 @@
 
 namespace Debianet.Domain.Dto;
 
-public class DotnetTool
+public class DotnetToolOutput
 {
     [JsonPropertyName("packageId")]
     public required string PackageId { get; set; }
@@ -10,4 +10,8 @@ public class DotnetTool
     public required string Version { get; set; }
     [JsonPropertyName("commands")]
     public required string[] Commands { get; set; }
+
+    [JsonIgnore]
+    public string CommandsString
+        => string.Join(',', Commands);
 }

@@ -22,18 +22,10 @@ public sealed class HtmlStreamer
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>{{HttpUtility.HtmlEncode(title)}}</title>
-                <style>
-                body {
-                    background: #282A36;
-                    color: #F8F8F2;
-                    font-size: 16px;
-                }
-                .error {
-                    color: #FF5555;
-                }
-                </style>
+                <link rel="stylesheet" href="picnic.min.css">
+                <link rel="stylesheet" href="style.css">
             </head>
-            <body>
+            <body style="margin-left: 1rem; background: #f5f5f5;">
             """);
 
         await _response.Body.FlushAsync();
@@ -41,8 +33,8 @@ public sealed class HtmlStreamer
 
     private async Task Scroll()
     {
-        await _response.WriteAsync("<script>window.scrollTo({ top: document.body.scrollHeight, behavior: \"smooth\" });</script>");
-        await _response.WriteAsync(Environment.NewLine);
+        //await _response.WriteAsync("<script>window.scrollTo({ top: document.body.scrollHeight, behavior: \"smooth\" });</script>");
+        //await _response.WriteAsync(Environment.NewLine);
     }
 
     public async Task UnknownActionAsync(string action)
@@ -53,14 +45,21 @@ public sealed class HtmlStreamer
 
     public async Task BeginPreAsync()
     {
-        await _response.WriteAsync("<pre>");
+        await _response.WriteAsync("<div class=\"preformatted\">");
+        await Scroll();
+        await _response.Body.FlushAsync();
+    }
+
+    public async Task EndPreAsync()
+    {
+        await _response.WriteAsync("</div>");
         await Scroll();
         await _response.Body.FlushAsync();
     }
 
     public async Task HeaderAsync(string header)
     {
-        await _response.WriteAsync($"<h3>{HttpUtility.HtmlEncode(header)}</h3><hr/>{Environment.NewLine}");
+        await _response.WriteAsync($"<h2>{HttpUtility.HtmlEncode(header)}</h2>{Environment.NewLine}");
         await Scroll();
         await _response.Body.FlushAsync();
     }
@@ -79,18 +78,12 @@ public sealed class HtmlStreamer
         await _response.Body.FlushAsync();
     }
 
-    public async Task EndPreAsync()
-    {
-        await _response.WriteAsync("</pre>");
-        await Scroll();
-        await _response.Body.FlushAsync();
-    }
-
     public async Task EndAsync(bool backButton = true)
     {
         if (backButton)
         {
             await _response.WriteAsync("""
+                <hr/>
                 <button onclick='history.back()'>Go back...</button>
             """);
         }

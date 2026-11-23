@@ -8,5 +8,5 @@ public class DotnetToolList
     [JsonPropertyName("version")]
     public required int Version { get; set; }
     [JsonPropertyName("data")]
-    public required DotnetTool[] Data { get; set; }
+    public required DotnetToolOutput[] Data { get; set; }
 }

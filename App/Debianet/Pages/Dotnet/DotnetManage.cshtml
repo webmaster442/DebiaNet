@@ -2,44 +2,65 @@
 @model Debianet.Pages.Dotnet.DotnetManageModel
 @{
 }
-<h1>.NET Information</h1>
-<div class="tabs four">
+<h1>.NET info &amp; management</h1>
+<div class="tabs two">
     <input id='tab-1' type='radio' name='tabgroupB' checked />
     <label class="pseudo button toggle" for="tab-1">Runtimes</label>
     <input id='tab-2' type='radio' name='tabgroupB'>
     <label class="pseudo button toggle" for="tab-2">Sdks</label>
     <input id='tab-3' type='radio' name='tabgroupB'>
-    <label class="pseudo button toggle" for="tab-3">Workloads</label>
-    <input id='tab-4' type='radio' name='tabgroupB'>
-    <label class="pseudo button toggle" for="tab-4">Templates</label>
     <div class="row">
         <div>
-            Runtimes
+            @Html.Raw(Model.DotnetRuntimes.ToHtmlTable(firstRowHeader: true))
         </div>
 
         <div>
-            Sdks
-        </div>
-
-        <div>
-            Workloads
-        </div>
-        <div>
-            Templates
+            @Html.Raw(Model.DotnetSdks.ToHtmlTable(firstRowHeader: true))
         </div>
     </div>
 </div>
 
-<article class="card">
-    <header>
-        <h3>.NET management</h3>
-    </header>
-    <p>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET wokrloads..." asp-route-action="update-workloads">Update workloads</a>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET tools..." asp-route-action="update-installed-tools">Update installed tools</a>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Clearing NuGet cache..." asp-route-action="clear-nuget-local-cache">Clear NuGet local cache</a>
-    </p>
-    <footer>
-        Update .NET workloads and tools, and clear the local NuGet cache.
-    </footer>
-</article>
+<label for="modal_1" class="button">Workloads...</label>
+<label for="modal_2" class="button">Templates...</label>
+
+<div class="modal">
+    <input id="modal_1" type="checkbox" />
+    <label for="modal_1" class="overlay"></label>
+    <article>
+        <header>
+            <h3>Workloads</h3>
+            <label for="modal_1" class="close">&times;</label>
+        </header>
+        <section class="content">
+            <pre>@Model.DotnetWorkloads</pre>
+        </section>
+        <footer>
+            <label for="modal_1" class="button dangerous">Ok</label>
+        </footer>
+    </article>
+</div>
+
+<div class="modal">
+    <input id="modal_2" type="checkbox" />
+    <label for="modal_2" class="overlay"></label>
+    <article>
+        <header>
+            <h3>Workloads</h3>
+            <label for="modal_2" class="close">&times;</label>
+        </header>
+        <section class="content">
+            <pre>@Model.DotnetTemplates</pre>
+        </section>
+        <footer>
+            <label for="modal_2" class="button dangerous">Ok</label>
+        </footer>
+    </article>
+</div>
+
+<h2>Management</h2>
+
+<p>
+    <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET wokrloads..." asp-route-action="update-workloads">Update workloads</a>
+    <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET tools..." asp-route-action="update-installed-tools">Update installed tools</a>
+    <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Clearing NuGet cache..." asp-route-action="clear-nuget-local-cache">Clear NuGet local cache</a>
+</p>

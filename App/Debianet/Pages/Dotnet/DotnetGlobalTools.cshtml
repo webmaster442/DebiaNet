@@ -1,0 +1,24 @@
+﻿@page
+@model Debianet.Pages.Dotnet.DotnetGlobalToolsModel
+@{
+}
+<h1>Installed .NET Tools from all sources</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Package id</th>
+            <th>Version</th>
+            <th>Commands</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tool in Model.DotnetTools)
+        {
+            <tr>
+                <td>@tool.PackageId</td>
+                <td>@tool.Version</td>
+                <td>@tool.CommandsString</td>
+            </tr>
+        }
+    </tbody>
+</table>

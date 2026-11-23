@@ -22,7 +22,7 @@
                     <a href="@tool.Link" target="_blank">@tool.Link</a>
                 </td>
                 <td>
-                    <form method="post" asp-page="/DockerToolChange">
+                    <form method="post" asp-page="/Docker/DockerToolChange">
                         <input type="hidden" asp-for="@tool.Name" name="ToolName" />
                         <input type="hidden" asp-for="@tool.ContainerId" name="ContainerId" />
                         @if (string.IsNullOrEmpty(tool.ContainerId))

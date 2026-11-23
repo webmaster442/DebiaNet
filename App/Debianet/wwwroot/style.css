@@ -16,6 +16,20 @@
     text-decoration: underline;
 }
 
+.error {
+    color: #FF5555;
+}
+
+.preformatted {
+    font-family: monospace;
+    background: #f5f5f5;
+    white-space: pre;
+}
+
+    .preformatted p {
+        margin: 0;
+    }
+
 main {
     margin-left: var(--sidebar-width);
     padding-left: 8px;

@@ -30,16 +30,6 @@ internal sealed class CommandRunner : ICommandRunner
                     .Command("sudo", ["-n", "apt-get", "update"])
                     .Command("sudo", ["-n", "apt-get", "install", "-y", "build-essential", "cmake", "gcc", "g++"])
                     .Build();
-            case "list-net-runtimes":
-                return CommandBundle.Create("dotnet", ["--list-runtimes"]);
-            case "list-net-sdks":
-                return CommandBundle.Create("dotnet", ["--list-sdks"]);
-            case "list-net-workloads":
-                return CommandBundle.Create("dotnet", ["workload", "list"]);
-            case "list-net-global-tools":
-                return CommandBundle.Create("dotnet", ["tool", "list", "-g"]);
-            case "list-net-templates":
-                return CommandBundle.Create("dotnet", ["new", "list"]);
             case "update-workloads":
                 return CommandBundle.Create("dotnet", ["workload", "update"]);
             case "update-installed-tools":
