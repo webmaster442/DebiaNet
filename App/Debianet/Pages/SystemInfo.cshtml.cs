@@ -29,7 +29,7 @@ internal class SystemInfoModel : PageModel
 
     private async Task<string> GetCpuData(CancellationToken cancellationToken)
     {
-        var lscpuJson = await RunAndGetStdout("lscpu", ["-J"], -1, cancellationToken);
+        var lscpuJson = await RunAndGetStdout("lscpu", ["-J"], null, cancellationToken);
         LsCpuResult? result = JsonSerializer.Deserialize<LsCpuResult>(lscpuJson, JsonSerializerOptions.Web);
         var cpuModel = result?.Lscpu.FirstOrDefault(x => x.Field == LsCpuResult.ModelName)?.Data;
         return cpuModel != null ? cpuModel : "n/a";

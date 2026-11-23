@@ -109,6 +109,8 @@ internal sealed class CommandRunner : ICommandRunner
 
     private static string GetLines(string str, int value)
     {
+        ArgumentOutOfRangeException.ThrowIfLessThan(value, 1);
+
         StringBuilder stringBuilder = new StringBuilder();
         using var reader = new StringReader(str);
         string? line;
