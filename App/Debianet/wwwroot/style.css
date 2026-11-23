@@ -1,0 +1,26 @@
+:root {
+    --sidebar-width: 210px;
+}
+
+.nav {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    width: var(--sidebar-width);
+    border-right: 1px solid black;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin-left: var(--sidebar-width);
+    padding-left: 8px;
+}
+
+table {
+    width: 100%;
+}

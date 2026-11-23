@@ -7,9 +7,8 @@
     <table class="table">
         <thead>
             <tr>
-                <td>Installed?</td>
-                <td>Name</td>
-                <td>Description</td>
+                <th>Installed?</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -18,22 +17,24 @@
                 var tool = Model.Tools[i];
                 <tr>
                     <td>
-                        <input asp-for="Tools[i].IsChecked" aria-label="@tool.Name" />
+                        <label>
+                            <input asp-for="Tools[i].IsChecked" aria-label="@tool.Name" type="checkbox" />
+                            <span class="checkable">@tool.Name</span>
+                        </label>
                         <input type="hidden" asp-for="Tools[i].Name" />
                     </td>
-                    <td>@tool.Name</td>
                     <td>
-                        @tool.Description<br /><br />
+                        @tool.Description<br />
                         <a href="@tool.Link" target="_blank">@tool.Link</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="button" class="btn btn-secondary" id="uncheck-all">Uncheck all</button>
-    <button type="button" class="btn btn-secondary" id="check-all">Check all</button>
-    <button type="reset" class="btn btn-secondary">Reset</button>
+    <button type="submit">Modify</button>
+    <button type="button" class="warning" id="uncheck-all">Uncheck all</button>
+    <button type="button" class="warning" id="check-all">Check all</button>
+    <button type="reset" class="success">Reset</button>
 </form>
 
 @section Scripts {

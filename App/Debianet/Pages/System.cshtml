@@ -3,34 +3,44 @@
 @{
 }
 <h1>System management</h1>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Package management</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Clean the APT cache, update packages, and install C/C++ development tools.</h6>
-        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/PerformAction" asp-route-title="Cleaning apt cache..." asp-route-action="aptclean">Apt clean</a>
-        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/PerformAction" asp-route-title="Updating apt packages..." asp-route-action="aptupdate">Apt update</a>
-        <a asp-area="" class="btn btn-primary btn-lg" role="button" asp-page="/PerformAction" asp-route-title="Installing C/C++ dev tools..." asp-route-action="installdevtools">Install C/C++ dev tools</a>
-    </div>
-</div>
-<br/>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">.NET Info</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">View installed .NET runtimes, SDKs, workloads, global tools, and templates.</h6>
-        <a asp-area="" class="btn btn-secondary btn-lg" role="button" asp-page="/PerformAction" asp-route-title=".NET runtimes" asp-route-action="list-net-runtimes">List .NET Runtimes</a>
-        <a asp-area="" class="btn btn-secondary btn-lg" role="button" asp-page="/PerformAction" asp-route-title=".NET Sdks" asp-route-action="list-net-sdks">List .NET Sdks</a>
-        <a asp-area="" class="btn btn-secondary btn-lg" role="button" asp-page="/PerformAction" asp-route-title=".NET Workloads" asp-route-action="list-net-workloads">List .NET Workloads</a>
-        <a asp-area="" class="btn btn-secondary btn-lg" role="button" asp-page="/PerformAction" asp-route-title=".NET Global tools" asp-route-action="list-net-global-tools">List .NET Global tools</a>
-        <a asp-area="" class="btn btn-secondary btn-lg" role="button" asp-page="/PerformAction" asp-route-title=".NET Templates" asp-route-action="list-net-templates">List .NET Templates</a>
-    </div>
-</div>
-<br/>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">.NET management</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Update .NET workloads and tools, and clear the local NuGet cache.</h6>
-        <a asp-area="" class="btn btn-warning btn-lg" role="button" asp-page="/PerformAction" asp-route-title="Updating .NET wokrloads..." asp-route-action="update-workloads">Update workloads</a>
-        <a asp-area="" class="btn btn-warning btn-lg" role="button" asp-page="/PerformAction" asp-route-title="Updating .NET tools..." asp-route-action="update-installed-tools">Update installed tools</a>
-        <a asp-area="" class="btn btn-warning btn-lg" role="button" asp-page="/PerformAction" asp-route-title="Clearing NuGet cache..." asp-route-action="clear-nuget-local-cache">Clear NuGet local cache</a>
-    </div>
-</div>
+<article class="card">
+    <header>
+        <h3>Package management</h3>
+    </header>
+    <p>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Cleaning apt cache..." asp-route-action="aptclean">Apt clean</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating apt packages..." asp-route-action="aptupdate">Apt update</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Installing C/C++ dev tools..." asp-route-action="installdevtools">Install C/C++ dev tools</a>
+    </p>
+    <footer>
+        Clean the APT cache, update packages, and install C/C++ development tools.
+    </footer>
+</article>
+<article class="card">
+    <header>
+        <h3>.NET management</h3>
+    </header>
+    <p>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET wokrloads..." asp-route-action="update-workloads">Update workloads</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET tools..." asp-route-action="update-installed-tools">Update installed tools</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Clearing NuGet cache..." asp-route-action="clear-nuget-local-cache">Clear NuGet local cache</a>
+    </p>
+    <footer>
+        Update .NET workloads and tools, and clear the local NuGet cache.
+    </footer>
+</article>
+<article class="card">
+    <header>
+        <h3>.NET Info</h3>
+    </header>
+    <p>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title=".NET runtimes" asp-route-action="list-net-runtimes">List .NET Runtimes</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title=".NET Sdks" asp-route-action="list-net-sdks">List .NET Sdks</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title=".NET Workloads" asp-route-action="list-net-workloads">List .NET Workloads</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title=".NET Global tools" asp-route-action="list-net-global-tools">List .NET Global tools</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title=".NET Templates" asp-route-action="list-net-templates">List .NET Templates</a>
+    </p>
+    <footer>
+        View installed .NET runtimes, SDKs, workloads, global tools, and templates.
+    </footer>
+</article>

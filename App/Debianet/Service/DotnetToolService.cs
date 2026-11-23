@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 
 using Debianet.Domain;
+using Debianet.Domain.Dto;
 using Debianet.ServiceContract;
 
 namespace Debianet.Service;
@@ -12,6 +13,34 @@ internal sealed class DotnetToolService : IDotnetToolService
     public DotnetToolService(ICommandRunner commandRunner)
     {
         _commandRunner = commandRunner;
+    }
+
+    public async Task<Result<DotnetToolList>> GetDotnetToolListAsync(CancellationToken cancellationToken)
+    {
+        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("dotnet", ["tool", "list", "-g", "--format", "json"]).Commands.First(), cancellationToken);
+
+
+        if (result.Value is Error error)
+            return error;
+
+        if (result.Value is string str)
+        {
+            try
+            {
+                DotnetToolList? toolList = System.Text.Json.JsonSerializer.Deserialize<DotnetToolList>(str);
+                if (toolList == null)
+                {
+                    return new Error("Failed to deserialize the dotnet tool list.");
+                }
+                return toolList;
+            }
+            catch (Exception ex)
+            {
+                return new Error($"Failed to deserialize the dotnet tool list: {ex.Message}");
+            }
+        }
+
+        throw new UnreachableException("This code should be unreachable.");
     }
 
     public async Task<Result<IReadOnlySet<string>>> GetInstalledToolsAsync(CancellationToken cancellationToken)
