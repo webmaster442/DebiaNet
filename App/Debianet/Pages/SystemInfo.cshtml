@@ -2,52 +2,74 @@
 @model Debianet.Pages.SystemInfoModel
 @{
 }
-<h1>System Information</h1>
-<table class="table">
-    <tr>
-        <td>Host name</td>
-        <td>@Model.Info.HostName</td>
-    </tr>
-    <tr>
-        <td>Kernel</td>
-        <td>@Model.Info.KernelInfo</td>
-    </tr>
-    <tr>
-        <td>Uptime</td>
-        <td>@Model.Info.UpTime</td>
-    </tr>
-    <tr>
-        <td>Shell</td>
-        <td>@Model.Info.Shell</td>
-    </tr>
-    <tr>
-        <td>Cpu</td>
-        <td>@Model.Info.CpuInfo</td>
-    </tr>
-</table>
 
-<h2>Memory Information</h2>
-<table class="table">
-@foreach (var mem in Model.Info.MemoryInfo.Rows)
-{
-    <tr>
-    @foreach (var col in mem.Columns)
-    {
-        <td>@col</td>
-    }
-    </tr>
-}
-</table>
+<h1>System information</h1>
+<div class="tabs three">
+    <input id='tab-1' type='radio' name='tabgroupB' checked />
+    <label class="pseudo button toggle" for="tab-1">Overview</label>
+    <input id='tab-2' type='radio' name='tabgroupB'>
+    <label class="pseudo button toggle" for="tab-2">Memory Information</label>
+    <input id='tab-3' type='radio' name='tabgroupB'>
+    <label class="pseudo button toggle" for="tab-3">Disk Information</label>
+    <div class="row">
+        <div>
+            <h3>Overview</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Host name</td>
+                        <td>@Model.Info.HostName</td>
+                    </tr>
+                    <tr>
+                        <td>Kernel</td>
+                        <td>@Model.Info.KernelInfo</td>
+                    </tr>
+                    <tr>
+                        <td>Uptime</td>
+                        <td>@Model.Info.UpTime</td>
+                    </tr>
+                    <tr>
+                        <td>Shell</td>
+                        <td>@Model.Info.Shell</td>
+                    </tr>
+                    <tr>
+                        <td>Cpu</td>
+                        <td>@Model.Info.CpuInfo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<h2>Disk Information</h2>
-<table class="table">
-@foreach (var mem in Model.Info.DiskInfo.Rows)
-{
-    <tr>
-        @foreach (var col in mem.Columns)
-        {
-            <td>@col</td>
-        }
-    </tr>
-}
-</table>
+        <div>
+            <h3>Memory Information</h3>
+            @Html.Raw(Model.Info.MemoryInfo.ToHtmlTable(firstRowHeader: true))
+        </div>
+
+        <div>
+            <h3>Disk Information</h3>
+            @Html.Raw(Model.Info.DiskInfo.ToHtmlTable(firstRowHeader: true))
+        </div>
+    </div>
+</div>
+
+
+<h1>System management</h1>
+<article class="card">
+    <header>
+        <h3>Package management</h3>
+    </header>
+    <p>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Cleaning apt cache..." asp-route-action="aptclean">Apt clean</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating apt packages..." asp-route-action="aptupdate">Apt update</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Installing C/C++ dev tools..." asp-route-action="installdevtools">Install C/C++ dev tools</a>
+    </p>
+    <footer>
+        Clean the APT cache, update packages, and install C/C++ development tools.
+    </footer>
+</article>

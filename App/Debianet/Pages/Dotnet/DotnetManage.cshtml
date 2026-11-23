@@ -1,0 +1,45 @@
+﻿@page
+@model Debianet.Pages.Dotnet.DotnetManageModel
+@{
+}
+<h1>.NET Information</h1>
+<div class="tabs four">
+    <input id='tab-1' type='radio' name='tabgroupB' checked />
+    <label class="pseudo button toggle" for="tab-1">Runtimes</label>
+    <input id='tab-2' type='radio' name='tabgroupB'>
+    <label class="pseudo button toggle" for="tab-2">Sdks</label>
+    <input id='tab-3' type='radio' name='tabgroupB'>
+    <label class="pseudo button toggle" for="tab-3">Workloads</label>
+    <input id='tab-4' type='radio' name='tabgroupB'>
+    <label class="pseudo button toggle" for="tab-4">Templates</label>
+    <div class="row">
+        <div>
+            Runtimes
+        </div>
+
+        <div>
+            Sdks
+        </div>
+
+        <div>
+            Workloads
+        </div>
+        <div>
+            Templates
+        </div>
+    </div>
+</div>
+
+<article class="card">
+    <header>
+        <h3>.NET management</h3>
+    </header>
+    <p>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET wokrloads..." asp-route-action="update-workloads">Update workloads</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET tools..." asp-route-action="update-installed-tools">Update installed tools</a>
+        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Clearing NuGet cache..." asp-route-action="clear-nuget-local-cache">Clear NuGet local cache</a>
+    </p>
+    <footer>
+        Update .NET workloads and tools, and clear the local NuGet cache.
+    </footer>
+</article>

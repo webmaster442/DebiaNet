@@ -1,4 +1,7 @@
-﻿using CliWrap;
+﻿using System.Diagnostics;
+using System.Text;
+
+using CliWrap;
 using CliWrap.Buffered;
 
 using Debianet.Domain;
@@ -92,10 +95,53 @@ internal sealed class CommandRunner : ICommandRunner
 
     }
 
-    public async Task<Result<string>> CaptureCommandOutputAsync(Domain.Command command, CancellationToken cancellationToken)
+    public async Task<Result<string>> CaptureCommandOutputAsync(string command, string[] arguments, int? lineCount, CancellationToken cancellationToken)
     {
-        BufferedCommandResult result = await Cli.Wrap(command.Program)
-            .WithArguments(command.Arguments)
+        if (command.StartsWith('$'))
+        {
+            command = Environment.GetEnvironmentVariable(command[1..]) ?? command;
+        }
+
+        var result = await CaptureCommandOutputAsync(CommandBundle.Create(command, arguments), cancellationToken);
+
+        if (result.Value is Error error)
+            return error;
+
+        if (result.Value is string str)
+        {
+            return lineCount.HasValue 
+                ? GetLines(str, lineCount.Value)
+                : str;
+        }
+
+        throw new UnreachableException("This code path should never be reached.");
+    }
+
+    private static string GetLines(string str, int value)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        using var reader = new StringReader(str);
+        string? line;
+        do
+        {
+            line = reader.ReadLine();
+            if (line == null)
+                break;
+            stringBuilder.AppendLine(line);
+        }
+        while (--value > 0 && line != null);
+        return stringBuilder.ToString();
+    }
+
+    public async Task<Result<string>> CaptureCommandOutputAsync(CommandBundle commandBundle, CancellationToken cancellationToken)
+    {
+        if (commandBundle.Commands.Count > 1)
+        {
+            return new Error("CaptureCommandOutputAsync only supports a single command.");
+        }
+
+        BufferedCommandResult result = await Cli.Wrap(commandBundle.Commands[0].Program)
+            .WithArguments(commandBundle.Commands[0].Arguments)
             .WithValidation(CommandResultValidation.None)
             .ExecuteBufferedAsync(cancellationToken);
 

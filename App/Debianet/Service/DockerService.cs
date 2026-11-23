@@ -44,11 +44,7 @@ internal sealed class DockerService : IDockerService
         if (!_isDockerInstalled)
             return new Error("Docker is not installed or the Docker daemon is not running.");
 
-        var result = await _commandRunner.CaptureCommandOutputAsync(new Command
-        {
-            Program = "docker",
-            Arguments = ["images", "--format", "json"]
-        }, cancellationToken);
+        var result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("docker", ["images", "--format", "json"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;
@@ -64,11 +60,7 @@ internal sealed class DockerService : IDockerService
         if (!_isDockerInstalled)
             return new Error("Docker is not installed or the Docker daemon is not running.");
 
-        var result = await _commandRunner.CaptureCommandOutputAsync(new Command
-        {
-            Program = "docker",
-            Arguments = ["network", "ls", "--format", "json"]
-        }, cancellationToken);
+        var result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("docker", ["network", "ls", "--format", "json"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;
@@ -84,11 +76,7 @@ internal sealed class DockerService : IDockerService
         if (!_isDockerInstalled)
             return new Error("Docker is not installed or the Docker daemon is not running.");
 
-        var result = await _commandRunner.CaptureCommandOutputAsync(new Command
-        {
-            Program = "docker",
-            Arguments = ["ps", "--format", "json"]
-        }, cancellationToken);
+        var result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("docker", ["ps", "--format", "json"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;
@@ -104,11 +92,7 @@ internal sealed class DockerService : IDockerService
         if (!_isDockerInstalled)
             return new Error("Docker is not installed or the Docker daemon is not running.");
 
-        var result = await _commandRunner.CaptureCommandOutputAsync(new Command
-        {
-            Program = "docker",
-            Arguments = ["volume", "ls", "--format", "json"]
-        }, cancellationToken);
+        var result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("docker", ["volume", "ls", "--format", "json"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;
@@ -127,11 +111,7 @@ internal sealed class DockerService : IDockerService
         if (string.IsNullOrEmpty(composeFilePath))
             return string.Empty;
 
-        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(new Command
-        {
-            Program = "docker",
-            Arguments = ["compose", "-f", composeFilePath, "ps", "-q"]
-        }, cancellationToken);
+        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("docker", ["compose", "-f", composeFilePath, "ps", "-q"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;

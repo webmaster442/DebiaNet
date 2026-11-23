@@ -6,7 +6,7 @@ using Debianet.ServiceContract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Debianet.Pages;
+namespace Debianet.Pages.Dotnet;
 
 internal sealed class DotnetToolChangeModel : PageModel
 {

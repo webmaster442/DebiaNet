@@ -17,8 +17,7 @@ internal sealed class DotnetToolService : IDotnetToolService
 
     public async Task<Result<DotnetToolList>> GetDotnetToolListAsync(CancellationToken cancellationToken)
     {
-        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("dotnet", ["tool", "list", "-g", "--format", "json"]).Commands.First(), cancellationToken);
-
+        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("dotnet", ["tool", "list", "-g", "--format", "json"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;
@@ -46,7 +45,7 @@ internal sealed class DotnetToolService : IDotnetToolService
     public async Task<Result<IReadOnlySet<string>>> GetInstalledToolsAsync(CancellationToken cancellationToken)
     {
 
-        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("dotnet", ["tool", "list", "-g"]).Commands.First(), cancellationToken);
+        Result<string> result = await _commandRunner.CaptureCommandOutputAsync(CommandBundle.Create("dotnet", ["tool", "list", "-g"]), cancellationToken);
 
         if (result.Value is Error error)
             return error;
@@ -71,7 +70,7 @@ internal sealed class DotnetToolService : IDotnetToolService
 
             return tools;
         }
-        
+  
         throw new UnreachableException("This code should be unreachable.");
     }
 
@@ -82,7 +81,7 @@ internal sealed class DotnetToolService : IDotnetToolService
         {
             builder.Command("dotnet", ["tool", "uninstall", tool, "--global"]);
         }
-        
+
         foreach (string tool in toolsToInstall)
         {
             builder.Command("dotnet", ["tool", "install", tool, "--global"]);

@@ -39,6 +39,53 @@ internal static class TableFactory
     private static List<string> Clamp(int maxCount, string[] columns) 
         => columns.Take(maxCount).ToList();
 
+    private static IReadOnlyList<string> SplitBySpace(string str, (char start, char end)? escapeData)
+    {
+        if (escapeData == null)
+            return str.Split([' '], StringSplitOptions.RemoveEmptyEntries);
+
+        List<string> result = new();
+
+        for (int i = 0; i < str.Length;)
+        {
+            if (str[i] == escapeData.Value.start)
+            {
+                int endIndex = str.IndexOf(escapeData.Value.end, i + 1);
+                if (endIndex == -1)
+                {
+                    result.Add(str[(i + 1)..]);
+                    break;
+                }
+                else
+                {
+                    result.Add(str[(i + 1)..endIndex]);
+                    i = endIndex + 1;
+                }
+            }
+            else
+            {
+                int nextSpace = str.IndexOf(' ', i);
+                if (nextSpace == -1)
+                {
+                    result.Add(str[i..]);
+                    break;
+                }
+                else
+                {
+                    result.Add(str[i..nextSpace]);
+                    i = nextSpace + 1;
+                }
+            }
+            while (i < str.Length && str[i] == ' ')
+            {
+                i++;
+            }
+        }
+
+        return result;
+
+    }
+
     public static Table FromDfOutput(string dfOutput)
     {
         List<TableRow> rows = new();
@@ -81,6 +128,48 @@ internal static class TableFactory
             }
             i++;
         }
+        return new Table
+        {
+            Rows = rows,
+        };
+    }
+
+    internal static Table FromDotnetListRuntimes(string dotnetListRuntimes)
+    {
+        List<TableRow> rows = new();
+        rows.Add(TableRow.Create("SDK", "Version", "Path"));
+        string[] lines = dotnetListRuntimes.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var line in lines)
+        {
+            var columns = SplitBySpace(line, ('[', ']')).ToArray();
+            rows.Add(new TableRow
+            {
+                Columns = Clamp(3, columns)
+            });
+        }
+
+        return new Table
+        {
+            Rows = rows,
+        };
+    }
+
+    internal static Table FromDotnetListSdks(string dotnetListSdks)
+    {
+        List<TableRow> rows = new();
+        rows.Add(TableRow.Create("Version", "Path"));
+        string[] lines = dotnetListSdks.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var line in lines)
+        {
+            var columns = SplitBySpace(line, ('[', ']')).ToArray();
+            rows.Add(new TableRow
+            {
+                Columns = Clamp(2, columns)
+            });
+        }
+
         return new Table
         {
             Rows = rows,

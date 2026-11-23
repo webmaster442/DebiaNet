@@ -2,33 +2,7 @@
 @model Debianet.Pages.SystemModel
 @{
 }
-<h1>System management</h1>
-<article class="card">
-    <header>
-        <h3>Package management</h3>
-    </header>
-    <p>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Cleaning apt cache..." asp-route-action="aptclean">Apt clean</a>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating apt packages..." asp-route-action="aptupdate">Apt update</a>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Installing C/C++ dev tools..." asp-route-action="installdevtools">Install C/C++ dev tools</a>
-    </p>
-    <footer>
-        Clean the APT cache, update packages, and install C/C++ development tools.
-    </footer>
-</article>
-<article class="card">
-    <header>
-        <h3>.NET management</h3>
-    </header>
-    <p>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET wokrloads..." asp-route-action="update-workloads">Update workloads</a>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Updating .NET tools..." asp-route-action="update-installed-tools">Update installed tools</a>
-        <a asp-area="" class="button" asp-page="/PerformAction" asp-route-title="Clearing NuGet cache..." asp-route-action="clear-nuget-local-cache">Clear NuGet local cache</a>
-    </p>
-    <footer>
-        Update .NET workloads and tools, and clear the local NuGet cache.
-    </footer>
-</article>
+
 <article class="card">
     <header>
         <h3>.NET Info</h3>
